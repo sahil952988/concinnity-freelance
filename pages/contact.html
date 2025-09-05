@@ -6,14 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us - Concinnity Limited</title>
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&display=swap"
       rel="stylesheet" />
-
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
@@ -26,11 +24,11 @@
 
       body {
         font-family: "Inter", sans-serif;
-        background-color: white;
+        background: #fff;
         margin: 0;
-        padding: 0;
       }
 
+      /* Hero */
       .hero-section {
         background-image: url("/blurr-orange-blob.png");
         background-size: 100% 100%;
@@ -44,8 +42,7 @@
         background-size: cover;
         background-repeat: no-repeat;
         position: absolute;
-        top: 0;
-        left: 0;
+        inset: 0 auto auto 0;
         right: 0;
         height: 823px;
         z-index: 1;
@@ -59,17 +56,9 @@
         padding: 0 20px;
       }
 
-      .navbar-custom {
-        padding: 30px 0;
-      }
-
-      .navbar-brand img {
-        width: 172px;
-        height: 33px;
-      }
-
+      /* Navbar tweaks */
       .nav-link {
-        color: black !important;
+        color: #000 !important;
         font-weight: 400;
         margin: 0 15px;
         text-decoration: none;
@@ -82,42 +71,42 @@
       .btn-tools {
         background: transparent;
         border: 1px solid var(--orange-primary);
-        color: black;
+        color: #000;
         font-weight: 600;
         padding: 8px 35px;
         border-radius: 30px;
-        transition: all 0.3s ease;
+        transition: .3s;
       }
 
       .btn-tools:hover {
         background: var(--orange-primary);
-        color: white;
+        color: #fff;
       }
 
+      /* Page title/breadcrumb */
       .page-title {
         font-family: "Manrope", sans-serif;
         font-weight: 700;
         font-size: 55px;
-        color: black;
+        color: #000;
         text-align: center;
-        margin: 100px 0 30px 0;
+        margin: 100px 0 30px;
       }
 
       .breadcrumb-text {
         text-align: center;
         font-size: 18px;
-        color: black;
+        color: #000;
         margin-bottom: 70px;
       }
 
+      /* Contact form block */
       .contact-form-section {
         background: var(--orange-primary);
-        border-radius: 10px;
         border: 1px solid #f0f2f1;
+        border-radius: 10px;
         padding: 50px;
-        margin: 0;
         width: 100%;
-        position: relative;
       }
 
       .form-title {
@@ -130,7 +119,7 @@
       }
 
       .form-description {
-        color: white;
+        color: #fff;
         font-size: 18px;
         text-align: center;
         margin-bottom: 50px;
@@ -138,7 +127,7 @@
       }
 
       .form-control {
-        background: white;
+        background: #fff;
         border: 1px solid #f0f2f1;
         border-radius: 10px;
         padding: 10px 20px;
@@ -151,33 +140,33 @@
         color: var(--text-gray);
       }
 
-      .form-control.textarea-custom {
+      .textarea-custom {
         height: 204px;
         resize: none;
       }
 
       .btn-submit {
-        background: white;
+        background: #fff;
         border: 1px solid transparent;
         color: #171717;
         font-weight: 500;
         padding: 10px 50px;
         border-radius: 10px;
-        transition: all 0.3s ease;
+        transition: .3s;
       }
 
       .btn-submit:hover {
         background: #f8f9fa;
       }
 
+      /* Locations */
       .location-cards {
-        margin-top: 150px;
-        margin-bottom: 100px;
+        margin: 150px 0 100px;
         width: 100%;
       }
 
       .location-card {
-        background: white;
+        background: #fff;
         border: 1px solid var(--orange-primary);
         border-radius: 10px;
         padding: 30px;
@@ -193,20 +182,16 @@
         margin-bottom: 30px;
       }
 
-      .location-address {
+      .location-address,
+      .location-email {
         color: var(--text-gray);
         font-size: 18px;
         line-height: 1.4;
-        margin-bottom: 15px;
         padding-left: 35px;
         position: relative;
       }
 
       .location-email {
-        color: var(--text-gray);
-        font-size: 18px;
-        padding-left: 35px;
-        position: relative;
         text-decoration: underline;
       }
 
@@ -226,26 +211,19 @@
         height: 14px;
       }
 
+      /* Footer */
       .footer-section {
-        background: transparent;
         padding: 50px 0;
-        border-top: 1.5px solid rgba(23, 23, 23, 0.08);
+        border-top: 1.5px solid rgba(23, 23, 23, .08);
         margin-top: 100px;
         width: 100%;
+        background: transparent;
       }
 
       .footer-container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
-      }
-
-      .footer-logo {
-        width: 172px;
-        height: 33px;
-        background: black;
-        padding: 10px;
-        border-radius: 5px;
       }
 
       .footer-description {
@@ -270,7 +248,7 @@
         font-size: 16px;
         line-height: 2;
         display: block;
-        transition: color 0.3s ease;
+        transition: .3s;
       }
 
       .footer-link:hover {
@@ -278,7 +256,7 @@
       }
 
       .footer-bottom {
-        border-top: 1.5px solid rgba(23, 23, 23, 0.08);
+        border-top: 1.5px solid rgba(23, 23, 23, .08);
         padding-top: 20px;
         margin-top: 20px;
       }
@@ -293,7 +271,7 @@
         width: 24px;
         height: 24px;
         color: var(--text-gray);
-        transition: color 0.3s ease;
+        transition: .3s;
       }
 
       .social-icon:hover {
@@ -305,7 +283,7 @@
         font-size: 15px;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width:768px) {
         .page-title {
           font-size: 36px;
         }
@@ -316,91 +294,96 @@
 
         .location-card {
           margin-bottom: 20px;
+          height: auto;
         }
       }
     </style>
   </head>
 
   <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white py-3 fixed-top shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="/"><img src="/images/logo.png 1.svg" alt="Concinnity Logo" height="33" /></a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link fw-semibold active" href="/">Home</a></li>
+
+            <!-- Solutions (with submenus) -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Solutions</a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-submenu dropend">
+                  <a class="dropdown-item dropdown-toggle" href="#">Marketing</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/pages/ecommerce-seo.html">Ecommerce SEO</a></li>
+                    <li><a class="dropdown-item" href="/pages/InternationalSeo.html">International SEO</a></li>
+                    <li><a class="dropdown-item" href="/pages/LocalSeo.html">Local SEO</a></li>
+                    <li><a class="dropdown-item" href="/pages/SeoAudit.html">SEO Audit</a></li>
+                    <li><a class="dropdown-item" href="/pages/OraganicExposure.html">Organic Exposure</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown-submenu dropend">
+                  <a class="dropdown-item dropdown-toggle" href="#">Tech</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/pages/DataArchitecture.html">Data Architecture</a></li>
+                    <li><a class="dropdown-item" href="/pages/Tech-system-implementation.html">System Implementation</a>
+                    </li>
+                    <li><a class="dropdown-item" href="/pages/Tech-data-Analysis.html">Data Analysis</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a class="nav-link" href="/pages/blog.html">Blog</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/contact.html">Contact Us</a></li>
+          </ul>
+
+          <button class="btn-tools">Tools</button>
+        </div>
+      </div>
+    </nav>
+
     <div class="hero-section">
       <div class="grid-overlay"></div>
 
       <div class="content-wrapper">
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-custom">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-              <img src="/images/logo_company.png" alt="Logo" class="img-fluid" />
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                    Solutions
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact Us</a>
-                </li>
-              </ul>
-            </div>
-
-            <button class="btn btn-tools">Tools</button>
-          </div>
-        </nav>
-
-        <!-- Page Title -->
         <h1 class="page-title">Contact Us</h1>
-
-        <!-- Breadcrumb -->
-        <div class="breadcrumb-text">Home > Contact Us</div>
+        <div class="breadcrumb-text"><a style="text-decoration: none; color: black;" href="/">Home &gt; Contact Us</a>
+        </div>
 
         <!-- Contact Form -->
         <div class="contact-form-section">
           <h2 class="form-title">Let's start a conversation</h2>
-
           <p class="form-description">
-            Need to rank your business on search? Looking for more leads? Want
-            to dominate the digital marketing channels?<br /><br />
-            If you've answered yes to all, we're here for you. Contact us and
-            let's start mapping your digital marketing success with our
-            solutions!
+            Need to rank your business on search? Looking for more leads? Want to dominate the digital marketing
+            channels?<br><br>
+            If you've answered yes to all, we're here for you. Contact us and let's start mapping your digital marketing
+            success with our solutions!
           </p>
 
           <form>
             <div class="row mb-3">
-              <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="First Name" />
-              </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Last Name" />
-              </div>
+              <div class="col-md-6"><input type="text" class="form-control" placeholder="First Name" /></div>
+              <div class="col-md-6"><input type="text" class="form-control" placeholder="Last Name" /></div>
             </div>
 
-            <div class="mb-3">
-              <input type="email" class="form-control" placeholder="Email address" />
-            </div>
-
-            <div class="mb-4">
-              <textarea class="form-control textarea-custom" placeholder="Type your message here"></textarea>
-            </div>
+            <div class="mb-3"><input type="email" class="form-control" placeholder="Email address" /></div>
+            <div class="mb-4"><textarea class="form-control textarea-custom"
+                placeholder="Type your message here"></textarea></div>
 
             <button type="submit" class="btn btn-submit">Submit</button>
           </form>
         </div>
 
-        <!-- Location Cards -->
+        <!-- Locations -->
         <div class="location-cards">
           <div class="row">
             <div class="col-lg-6 mb-4">
@@ -408,8 +391,7 @@
                 <h3 class="location-title">Hong Kong</h3>
                 <div class="location-address">
                   <img src="/images/contact/location.png" alt="Location" class="location-icon" />
-                  Room# 1104, 11th Floor, Crawford House, 70 Queen's Road
-                  Central, Central, Hong Kong
+                  Room# 1104, 11th Floor, Crawford House, 70 Queen's Road Central, Central, Hong Kong
                 </div>
                 <div class="location-email">
                   <img src="/images/contact/email.png" alt="Email" class="email-icon" />
@@ -423,8 +405,7 @@
                 <h3 class="location-title">Singapore</h3>
                 <div class="location-address">
                   <img src="/images/contact/location.png" alt="Location" class="location-icon" />
-                  Address. 7 Temasek Boulevard #12-07 Suntec Tower One Singapore
-                  038987
+                  7 Temasek Boulevard #12-07 Suntec Tower One Singapore 038987
                 </div>
                 <a href="mailto:contact@concinnitylimited.com" class="location-email">
                   <img src="/images/contact/email.png" alt="Email" class="email-icon" />
@@ -434,6 +415,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
 
@@ -444,9 +426,9 @@
           <div class="col-lg-5">
             <img src="/images/logo_company.png" alt="Logo" class="img-fluid" />
             <p class="footer-description">
-              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-              nostrud exercitation ullamco laboris nisi ut aliquip ex.
+              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+              minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex.
             </p>
           </div>
 
@@ -472,9 +454,7 @@
         <div class="footer-bottom">
           <div class="row align-items-center">
             <div class="col-md-6">
-              <p class="copyright-text mb-0">
-                Copyright 2025 Concinnity Limited.
-              </p>
+              <p class="copyright-text mb-0">Copyright 2025 Concinnity Limited.</p>
             </div>
             <div class="col-md-6 text-end">
               <div class="social-icons justify-content-end">
@@ -492,9 +472,22 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Initialize Lucide Icons -->
+    <!-- Init Lucide -->
+    <script> lucide.createIcons(); </script>
+
+    <!-- Nested submenu toggle -->
     <script>
-      lucide.createIcons();
+      document.querySelectorAll(".dropdown-submenu > a").forEach((el) => {
+        el.addEventListener("click", function (e) {
+          e.preventDefault(); e.stopPropagation();
+          const submenu = this.nextElementSibling; if (submenu) submenu.classList.toggle("show");
+        });
+      });
+      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+        dropdown.addEventListener("hidden.bs.dropdown", function () {
+          this.querySelectorAll(".dropdown-menu.show").forEach((m) => m.classList.remove("show"));
+        });
+      });
     </script>
   </body>
 

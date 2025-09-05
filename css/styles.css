@@ -8,8 +8,8 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
-  overflow-x: hidden;
+  padding-top: 80px;
+  /* adjust based on navbar height */
 }
 
 .font-manrope {
@@ -45,11 +45,9 @@ body {
 }
 
 .hero-section {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 126, 0, 0.05) 0%,
-    rgba(255, 255, 255, 1) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 126, 0, 0.05) 0%,
+      rgba(255, 255, 255, 1) 100%);
   min-height: 100vh;
   position: relative;
 }
@@ -177,7 +175,8 @@ body {
 .dropdown-submenu {
   position: relative;
 }
-.dropdown-submenu > .dropdown-menu {
+
+.dropdown-submenu>.dropdown-menu {
   top: 0;
   left: 100%;
   margin-top: -0.25rem;

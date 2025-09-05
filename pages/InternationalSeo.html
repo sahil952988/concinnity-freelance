@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Concinnity Limited - Ecommerce SEO Services</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap"
+      rel="stylesheet" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+      :root {
+        --orange-primary: #ff7e00;
+        --orange-hover: #e66d00;
+        --text-gray: #595959;
+        --text-dark: #171717;
+        --border-light: #f0f2f1;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: white;
+        overflow-x: hidden;
+      }
+
+      .font-manrope {
+        font-family: "Manrope", sans-serif;
+      }
+
+      .text-orange {
+        color: var(--orange-primary);
+      }
+
+      .bg-orange {
+        background-color: var(--orange-primary);
+      }
+
+      .text-gray {
+        color: var(--text-gray);
+      }
+
+      .text-dark {
+        color: var(--text-dark);
+      }
+
+      .border-light {
+        border-color: var(--border-light) !important;
+      }
+
+      .btn-orange {
+        background-color: var(--orange-primary);
+        border-color: var(--orange-primary);
+        color: white;
+        transition: all 0.3s ease;
+      }
+
+      .btn-orange:hover {
+        background-color: var(--orange-hover);
+        border-color: var(--orange-hover);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .card-shadow {
+        box-shadow: 0px 4px 20px rgba(210, 210, 210, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card-shadow:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 30px rgba(210, 210, 210, 0.25);
+      }
+
+      .card-shadow-light {
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .bg-dark-custom {
+        background-color: #171717;
+      }
+
+      .line-height-22 {
+        line-height: 1.4;
+      }
+
+      .hero-section {
+        background: linear-gradient(135deg,
+            rgba(255, 126, 0, 0.05) 0%,
+            rgba(255, 126, 0, 0.1) 100%);
+        min-height: 50vh;
+      }
+
+      .hero-text {
+        width: 690px;
+        margin: 0 auto;
+      }
+
+      .crumbs {
+        font-size: .95rem;
+        margin: .35rem 0 1rem;
+        text-align: center;
+      }
+
+      .crumbs a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .crumbs .sep {
+        margin: 0 .25rem;
+      }
+
+      .stats-number {
+        font-size: 4rem;
+        line-height: 1;
+      }
+
+      .section-spacing {
+        width: 984px;
+        margin: 80px auto;
+
+      }
+
+      .benfit-section {
+        width: 984px;
+        margin: 80px auto;
+        border-radius: 2px;
+      }
+
+      .benfit-section .col-lg-8 {
+        padding: 50px 80px 50px 81px;
+        border-radius: 2px;
+      }
+
+      .feature-card {
+        height: 100%;
+        min-height: 350px;
+      }
+
+      /* //// SECOND STATISCTICS///// */
+      .stat-section {
+        font-family: Arial, sans-serif;
+        max-width: 984px;
+        margin: 80px auto;
+        line-height: 1.6;
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+      }
+
+      .stat-image img {
+        width: 400px;
+        height: auto;
+        border-radius: 10px;
+        /* Rounded corners like in Figma */
+      }
+
+      .stat-content {
+        flex: 1;
+      }
+
+      .subheading {
+        color: #ff6600;
+        margin-bottom: 10px;
+      }
+
+      .highlight {
+        color: #ff6600;
+        /* Orange */
+        font-size: 65px;
+        font-weight: bold;
+      }
+
+      .head-text {
+        display: flex;
+      }
+
+      .stat-text {
+        margin-left: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        width: 419px;
+      }
+
+      .description {
+        margin-top: 10px;
+        color: #595959;
+        font-size: 15px;
+      }
+
+      /* ///// FEATURE VISIBILITY /////// */
+      .brand-visibility {
+        display: flex;
+        justify-content: center;
+        justify-content: space-between;
+        width: 984px;
+        margin: 80px auto;
+        margin-top: 150px;
+      }
+
+      .brand-visibility-text {
+        width: 649px;
+      }
+
+      .brand-visibility-title {
+        color: #FF7E00;
+      }
+
+      .Concinnity-text {
+        width: 815px;
+      }
+
+
+      /* /// Concinnity WAY //// */
+      /* Concinnity Section */
+      .concinnity {
+        padding: 72px 16px 96px;
+        background:
+          radial-gradient(1200px 400px at 50% 100%, rgba(255, 126, 0, 0.08), transparent 60%),
+          linear-gradient(to bottom, #fff 0%, #fff 55%, #fff7f0 85%, #fff 100%);
+      }
+
+      .concinnity__inner {
+        max-width: 820px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .concinnity__title {
+        color: var(--orange-primary);
+        font-weight: 800;
+        font-size: clamp(24px, 3.4vw, 32px);
+        margin: 0 0 16px;
+        letter-spacing: .2px;
+      }
+
+      .concinnity__lead {
+        color: var(--text-gray);
+        line-height: 1.75;
+        font-size: 16px;
+        margin: 0 auto 20px;
+      }
+
+      .concinnity__sub {
+        color: var(--text-dark);
+        font-weight: 600;
+        margin: 0 0 28px;
+        font-size: 18px;
+      }
+
+      .concinnity__cta {
+        display: inline-block;
+        background: var(--orange-primary);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        padding: 12px 26px;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(255, 126, 0, .25);
+        transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      }
+
+      .concinnity__cta:hover {
+        background: var(--orange-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(255, 126, 0, .28);
+      }
+
+      .concinnity__cta:active {
+        transform: translateY(0);
+        opacity: .95;
+      }
+
+      @media (max-width: 768px) {
+        .stats-number {
+          font-size: 3rem;
+        }
+
+        .hero-title {
+          font-size: 2.5rem !important;
+        }
+
+        .section-spacing {
+          padding: 40px 0;
+        }
+
+        .benfit-section {
+          padding: 50px 80px 50px 81px;
+        }
+
+        .feature-card {
+          min-height: auto;
+          margin-bottom: 2rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .stats-number {
+          font-size: 2.5rem;
+        }
+
+        .hero-title {
+          font-size: 2rem !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/images/logo.png 1.svg" alt="Concinnity Logo" height="33" />
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link fw-semibold active" href="/">Home</a>
+            </li>
+
+            <!-- Solutions Dropdown with Nested Submenus -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                Solutions
+              </a>
+              <ul class="dropdown-menu">
+                <!-- Marketing Submenu -->
+                <li class="dropdown-submenu dropend">
+                  <a class="dropdown-item dropdown-toggle" href="#">
+                    Marketing
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="/pages/ecommerce-seo.html">Ecommerce SEO</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/pages/InternationalSeo.html">International SEO</a>
+                    </li>
+                    <li><a class="dropdown-item" href="/pages/LocalSeo.html">Local SEO</a></li>
+                    <li><a class="dropdown-item" href="/pages/SeoAudit.html">SEO Audit</a></li>
+                    <li>
+                      <a class="dropdown-item" href="/pages/OraganicExposure.html">Organic Exposure</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <!-- Tech Submenu -->
+                <li class="dropdown-submenu dropend">
+                  <a class="dropdown-item dropdown-toggle" href="#"> Tech </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="/pages/DataArchitecture.html">Data Architecture</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/pages/Tech-system-implementation.html">System
+                        Implementation</a>
+                    </li>
+                    <li><a class="dropdown-item" href="/pages/Tech-data-Analysis.html">Data Analysis</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/contact.html">Contact Us</a>
+            </li>
+          </ul>
+
+          <button class="btn btn-outline-orange rounded-pill px-4">Tools</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12 col-xl-10">
+            <!-- Hero Content -->
+            <div class="hero-text text-center py-5">
+              <h1 class="font-manrope fw-bold hero-title mb-4" style="font-size: 3.5rem">
+                <p class="text-dark">International </p>
+                <p class="text-orange">SEO SERVICES</p>
+              </h1>
+
+              <div class="crumbs">
+                <a href="#">Home</a><span class="sep">›</span>
+                <a href="#">Solutions</a><span class="sep">›</span>
+                <a href="#">Marketing</a><span class="sep">›</span>
+                <a href="#">SEO</a><span class="sep">›</span>
+                <span class="text-orange">Internation SEO SERVICES</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Benefits Section -->
+    <section class="benfit-section bg-dark-custom">
+      <div class="">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <h2 class="font-manrope fw-bold mb-4" style="font-size: 2rem">
+              <span class="text-orange">Expand </span>
+              <span class="" style="color: #595959;">Your reach</span>
+            </h2>
+
+            <p class="text-light fs-6 mb-0 line-height-22">
+              Be globally competitive with Concinnity’s international SEO services. Our team of international SEO
+              consultants has helped numerous clients expand their reach to multiple countries and optimize for search
+              engines besides Google such as Yahoo!, Bing, Naver, Baidu, and Yandex. As a global SEO company, we create
+              actionable SEO strategies that promote brands on a global scale, while making sure your objectives are met
+              if not exceeded. <br>
+              <br>
+              What makes international SEO different from the usual SEO? To put simply, it goes beyond the normal
+              website optimization process. It involves other key tasks such as geo-targeting, localization, and
+              subdirectory URL among other things. With Concinnity at your side, these complexities would never be your
+              problem.
+            </p>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="text-center">
+              <img src="/images/InterantionalSeo/starIcon.svg" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Statistics Section -->
+    <section class="section-spacing">
+      <div class="">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <p class="text-orange fs-5 mb-3">What exactly is International SEO?</p>
+
+            <div class="d-flex align-items-start mb-4">
+              <span class="font-manrope fw-bold text-orange stats-number me-4">93%</span>
+              <div>
+                <h3 class="font-manrope fw-bold text-dark h4 mb-0">
+                  of online experience begin with a search engine
+                </h3>
+              </div>
+            </div>
+
+            <div class="text-gray fs-6 line-height-22">
+              International SEO is a digital strategy which is aimed to help businesses sell and promote their brand on
+              a global scale. This campaign involves more than the usual website optimization tasks. This particular
+              method also includes geo-targeting, localization, subdirectory url apart from a list of other things.
+              That’s why companies see it as a complex task to complete and may even be the source of their frustration.
+              This is where we come in. Our company specializes in providing you with perfect solutions to bring your
+              campaign on a global market. We offer changes that creates better experience to international audience.
+            </div>
+
+            <button class="btn btn-orange rounded-3 px-5 py-3 fw-medium fs-5 mt-4">
+              Let's Talk
+            </button>
+          </div>
+
+          <div class="col-lg-6 text-lg-end">
+            <img src="/images/InterantionalSeo/statistics.svg" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Visibility Section -->
+    <section class="brand-visibility">
+      <h2 class="brand-visibility-title ">
+        How can we
+        <br>
+        help you?
+      </h2>
+
+      <p class="brand-visibility-text">
+        On the surface, international SEO may seem like an unfamiliar concept, but once you get to know it, you’ll be
+        surprised at how easy it is to understand. This is true if you work with someone who knows the industry
+        inside-out.
+      </p>
+    </section>
+
+
+
+    <!-- Second Statistics Section -->
+    <div class="stat-section">
+      <!-- Image Section -->
+      <div class="stat-image">
+        <img src="/images/InterantionalSeo/stats second.svg" alt="People looking at laptop">
+      </div>
+
+      <!-- Text Section -->
+      <div class="stat-content">
+        <p class="subheading">Expand the Span of Your Website Reach</p>
+        <p class="head-text">
+          <span class="highlight">75%</span>
+          <span class="stat-text">never go past one of <br>
+            search results</span>
+        </p>
+        <p class="description">
+          At this day and time, creating a website is no longer enough. If you want to remain on top of the global
+          competition, it’s necessary you create a campaign that would specifically target that market. That’s why it’s
+          important you manage a strategy that is aimed towards international market. We help companies in exploring
+          streams of global audiences to establish new streams of profit and revenues.
+        </p>
+      </div>
+    </div>
+
+
+
+    <!-- The Concinnity Way Section -->
+    <section class="concinnity">
+      <div class="concinnity__inner">
+        <h2 class="concinnity__title">Going Global</h2>
+
+        <p class="concinnity__lead" style="color: #171717;">
+          Extending your business globally is a massive step that requires the right support from the right people. Our
+          team at Concinnity knows how to help your campaign penetrate the global market and your message to reach and
+          engage the international audience. We help you connect with the right individuals and attract the right
+          traffic to your website. It is more than getting your brand name out there for the world to see; it is about
+          making the most of your global reach by attracting a solid base of paying customers.
+          We do this by implementing a comprehensive technical optimization and a custom content strategy that factors
+          in your business goals, the unique needs of your audience, and the value that you want to share through your
+          product or service.
+          Let Concinnity create a global SEO strategy for you, a strategy that gives positive results and, of course,
+          new and better streams of revenue for your business.
+        </p>
+
+        <p class="concinnity__sub">
+          Let’s get things started for your global campaign.
+        </p>
+
+        <a class="concinnity__cta" href="../contact.html" aria-label="Let's Talk">Talk to us today</a>
+      </div>
+    </section>
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="py-5 border-top">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <img src="/images/logo.png 1.svg" alt="Concinnity Logo" class="img-fluid mb-4" style="max-height: 40px" />
+            <p class="text-muted">
+              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+              nostrud exercitation ullamco laboris nisi ut aliquip ex.
+            </p>
+          </div>
+          <div class="col-lg-2">
+            <h5 class="fw-bold mb-3">Useful Links</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">About</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Blog</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Contact</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Tools</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-2">
+            <h5 class="fw-bold mb-3">Services</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">SEO Audit</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Ecommerce SEO</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">International SEO</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Data Analysis</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Data Architecture</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-2">
+            <h5 class="fw-bold mb-3">Company</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">About Us</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Careers</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Press</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Partners</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Support</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-2">
+            <h5 class="fw-bold mb-3">Connect</h5>
+            <div class="d-flex flex-column gap-3">
+              <a href="#" class="text-muted text-decoration-none">
+                <i class="bi bi-facebook me-2"></i>Facebook
+              </a>
+              <a href="#" class="text-muted text-decoration-none">
+                <i class="bi bi-twitter me-2"></i>Twitter
+              </a>
+              <a href="#" class="text-muted text-decoration-none">
+                <i class="bi bi-linkedin me-2"></i>LinkedIn
+              </a>
+              <a href="#" class="text-muted text-decoration-none">
+                <i class="bi bi-instagram me-2"></i>Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4" />
+
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <p class="text-muted mb-0">Copyright 2025 Concinnity Limited.</p>
+          </div>
+          <div class="col-lg-6 text-lg-end">
+            <div class="d-flex justify-content-lg-end gap-3">
+              <a href="#" class="text-muted"><i class="bi bi-facebook fs-5"></i></a>
+              <a href="#" class="text-muted"><i class="bi bi-twitter fs-5"></i></a>
+              <a href="#" class="text-muted"><i class="bi bi-linkedin fs-5"></i></a>
+              <a href="#" class="text-muted"><i class="bi bi-instagram fs-5"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      document.querySelectorAll(".dropdown-submenu > a").forEach(function (el) {
+        el.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          let submenu = this.nextElementSibling;
+          if (submenu) {
+            submenu.classList.toggle("show");
+          }
+        });
+      });
+
+      // Close submenu when parent closes
+      document.querySelectorAll(".dropdown").forEach(function (dropdown) {
+        dropdown.addEventListener("hidden.bs.dropdown", function () {
+          this.querySelectorAll(".dropdown-menu.show").forEach(function (
+            submenu
+          ) {
+            submenu.classList.remove("show");
+          });
+        });
+      });
+    </script>
+  </body>
+
+</html>

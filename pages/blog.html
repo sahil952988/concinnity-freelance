@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog — Concinnity</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+      :root {
+        --bg-grid: rgba(0, 0, 0, .03);
+        --muted: #6c757d;
+        --soft: #f8f9fa;
+      }
+
+      /* Subtle grid background like the screenshot */
+      body {
+        background:
+          linear-gradient(to right, var(--bg-grid) 1px, transparent 1px) 0 0 / 32px 32px,
+          linear-gradient(to bottom, var(--bg-grid) 1px, transparent 1px) 0 0 / 32px 32px,
+          #fff;
+      }
+
+      /* NAV */
+      .navbar {
+        box-shadow: 0 2px 18px rgba(0, 0, 0, .05);
+      }
+
+      .navbar .nav-link {
+        padding: .5rem .75rem;
+      }
+
+      /* HERO */
+      .hero {
+        padding: 56px 0 32px;
+        background: linear-gradient(180deg, rgba(255, 184, 122, .08), rgba(255, 255, 255, 0));
+      }
+
+      .hero h1 {
+        font-size: clamp(1.5rem, 2.5vw + 1rem, 2.5rem);
+      }
+
+      .breadcrumb a {
+        text-decoration: none;
+      }
+
+      /* Post card styles */
+      .post-card {
+        border: 0;
+        background: #fff;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 28px;
+      }
+
+      .post-card .post-cover {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+      }
+
+      .post-meta {
+        font-size: .875rem;
+        color: var(--muted);
+      }
+
+      .read-more-btn {
+        padding-right: .65rem;
+      }
+
+      .read-more-btn .bi {
+        transition: transform .2s ease;
+        font-size: .9rem;
+        margin-left: .35rem;
+      }
+
+      .read-more-btn:hover .bi {
+        transform: translateX(2px);
+      }
+
+      /* Sidebar */
+      .sidebar .card {
+        border: 0;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .category-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: .75rem 1rem;
+        border-top: 1px solid #f1f3f5;
+        text-decoration: none;
+        color: #212529;
+      }
+
+      .category-item:hover {
+        background: var(--soft);
+      }
+
+      .recent-post {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: .75rem;
+        padding: .75rem 1rem;
+        border-top: 1px solid #f1f3f5;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .recent-thumb {
+        width: 72px;
+        height: 56px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+
+      .recent-title {
+        font-size: .9rem;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .recent-meta {
+        font-size: .75rem;
+        color: var(--muted);
+      }
+
+      /* Pagination */
+      .pagination .page-link {
+        border-radius: 8px;
+        border: 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .06);
+      }
+
+      /* ---------- RESPONSIVE TWEAKS ---------- */
+
+      /* Sidebar sticky only on lg+ (already), add top offset */
+      @media (min-width: 992px) {
+        .sidebar .sticky-lg-top {
+          top: 24px;
+        }
+      }
+
+      /* Reduce hero padding and cover heights on tablets */
+      @media (max-width: 1199.98px) {
+        .hero {
+          padding: 48px 0 28px;
+        }
+
+        .post-card .post-cover {
+          height: 280px;
+        }
+      }
+
+      /* On md, sidebar drops below main; tighten paddings */
+      @media (max-width: 991.98px) {
+        .hero {
+          padding: 40px 0 20px;
+        }
+
+        .post-card .post-cover {
+          height: 240px;
+        }
+
+        .sidebar {
+          margin-top: .5rem;
+        }
+      }
+
+      /* Phones: tighter gutters, smaller thumbs, compact pagination */
+      @media (max-width: 575.98px) {
+        .container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        .post-card .post-cover {
+          height: 200px;
+        }
+
+        .recent-post {
+          grid-template-columns: 56px 1fr;
+          gap: .5rem;
+          padding: .6rem .9rem;
+        }
+
+        .recent-thumb {
+          width: 56px;
+          height: 56px;
+        }
+
+        .pagination .page-link {
+          padding: .45rem .6rem;
+          font-size: .9rem;
+        }
+
+        .navbar .nav-link {
+          padding: .5rem .5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/images/logo.png 1.svg" alt="Concinnity Logo" height="33" />
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link fw-semibold active" href="/">Home</a>
+            </li>
+
+            <!-- Solutions Dropdown with Nested Submenus -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                Solutions
+              </a>
+              <ul class="dropdown-menu">
+                <!-- Marketing Submenu -->
+                <li class="dropdown-submenu dropend">
+                  <a class="dropdown-item dropdown-toggle" href="#">
+                    Marketing
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="/pages/ecommerce-seo.html">Ecommerce SEO</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/pages/InternationalSeo.html">International SEO</a>
+                    </li>
+                    <li><a class="dropdown-item" href="t/pages/LocalSeo.html">Local SEO</a></li>
+                    <li><a class="dropdown-item" href="/pages/SeoAudit.html">SEO Audit</a></li>
+                    <li>
+                      <a class="dropdown-item" href="/pages/OraganicExposure.html">Organic Exposure</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <!-- Tech Submenu -->
+                <li class="dropdown-submenu dropend">
+                  <a class="dropdown-item dropdown-toggle" href="#"> Tech </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="/pages/DataArchitecture.html">Data Architecture</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/pages/Tech-system-implementation.html">System
+                        Implementation</a>
+                    </li>
+                    <li><a class="dropdown-item" href="/pages/Tech-data-Analysis.html">Data Analysis</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/contact.html">Contact Us</a>
+            </li>
+          </ul>
+
+          <button class="btn btn-outline-orange rounded-pill px-4">Tools</button>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- HERO / BREADCRUMB -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="display-5 fw-bold">Blog</h1>
+        <nav class="breadcrumb mt-2">
+          <a class="breadcrumb-item" href="#">Home</a>
+          <span class="breadcrumb-item active">Blog</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="py-2 py-md-4">
+      <div class="container">
+        <div class="row g-4">
+          <!-- MAIN -->
+          <div class="col-lg-8">
+            <!-- Post 1 -->
+            <article class="card post-card">
+              <img class="post-cover" src="https://picsum.photos/seed/finance1/1200/800" alt="Post cover"
+                loading="lazy">
+              <div class="card-body p-4">
+                <div class="post-meta mb-2">
+                  By <strong>credio</strong> • August 26, 2024
+                </div>
+                <h2 class="h4 fw-semibold">
+                  About Personal Finance You need to stop Believing
+                </h2>
+                <p class="text-secondary mb-3">
+                  As time passes, our world gains advancements in technological and digital assets and in commerce.
+                  Every business owner fully takes advantage of these changes in our society, and peer-to-peer
+                  communication and transactions are really convenient nowadays, thanks to the digital world and...
+                </p>
+                <a href="#" class="btn btn-sm btn-dark read-more-btn">
+                  Read More <i class="bi bi-arrow-right-short"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="card post-card">
+              <img class="post-cover" src="https://picsum.photos/seed/finance2/1200/800" alt="Post cover"
+                loading="lazy">
+              <div class="card-body p-4">
+                <div class="post-meta mb-2">
+                  By <strong>credio</strong> • August 26, 2024
+                </div>
+                <h2 class="h4 fw-semibold">
+                  About Personal Finance You need to stop Believing
+                </h2>
+                <p class="text-secondary mb-3">
+                  As time passes, our world gains advancements in technological and digital assets and in commerce.
+                  Every business owner fully takes advantage of these changes in our society, and peer-to-peer
+                  communication and transactions are really convenient nowadays, thanks to the digital world and...
+                </p>
+                <a href="#" class="btn btn-sm btn-dark read-more-btn">
+                  Read More <i class="bi bi-arrow-right-short"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="card post-card">
+              <img class="post-cover" src="https://picsum.photos/seed/finance3/1200/800" alt="Post cover"
+                loading="lazy">
+              <div class="card-body p-4">
+                <div class="post-meta mb-2">
+                  By <strong>credio</strong> • August 26, 2024
+                </div>
+                <h2 class="h4 fw-semibold">
+                  About Personal Finance You need to stop Believing
+                </h2>
+                <p class="text-secondary mb-3">
+                  As time passes, our world gains advancements in technological and digital assets and in commerce.
+                  Every business owner fully takes advantage of these changes in our society, and peer-to-peer
+                  communication and transactions are really convenient nowadays, thanks to the digital world and...
+                </p>
+                <a href="#" class="btn btn-sm btn-dark read-more-btn">
+                  Read More <i class="bi bi-arrow-right-short"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Pagination -->
+            <nav aria-label="Blog pages">
+              <ul class="pagination justify-content-center gap-2 flex-wrap">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <i class="bi bi-arrow-left"></i> <span class="d-none d-sm-inline">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">8</a></li>
+                <li class="page-item"><a class="page-link" href="#">9</a></li>
+                <li class="page-item"><a class="page-link" href="#">10</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span class="d-none d-sm-inline">Next</span> <i class="bi bi-arrow-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <!-- SIDEBAR -->
+          <aside class="col-lg-4 sidebar">
+            <div class="sticky-lg-top">
+              <!-- Search -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-dark" type="submit"><i class="bi bi-search"></i></button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Categories -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h6 class="fw-semibold mb-3">Popular Categories</h6>
+                  <a href="#" class="category-item">
+                    <span>Consulting</span> <i class="bi bi-chevron-right"></i>
+                  </a>
+                  <a href="#" class="category-item">
+                    <span>Credit Repair</span> <i class="bi bi-chevron-right"></i>
+                  </a>
+                  <a href="#" class="category-item">
+                    <span>Finance</span> <i class="bi bi-chevron-right"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Recent Posts -->
+              <div class="card mb-4">
+                <div class="card-body pb-0">
+                  <h6 class="fw-semibold mb-3">Recent Posts</h6>
+                </div>
+
+                <a href="#" class="recent-post">
+                  <img class="recent-thumb" src="https://picsum.photos/seed/r1/160/120" alt="" loading="lazy">
+                  <div>
+                    <p class="recent-title">About Personal Finance You need to stop Believing</p>
+                    <div class="recent-meta">By credio • Aug 26, 2024</div>
+                  </div>
+                </a>
+
+                <a href="#" class="recent-post">
+                  <img class="recent-thumb" src="https://picsum.photos/seed/r2/160/120" alt="" loading="lazy">
+                  <div>
+                    <p class="recent-title">About Personal Finance You need to stop Believing</p>
+                    <div class="recent-meta">By credio • Aug 26, 2024</div>
+                  </div>
+                </a>
+
+                <a href="#" class="recent-post">
+                  <img class="recent-thumb" src="https://picsum.photos/seed/r3/160/120" alt="" loading="lazy">
+                  <div>
+                    <p class="recent-title">About Personal Finance You need to stop Believing</p>
+                    <div class="recent-meta">By credio • Aug 26, 2024</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 border-top">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <img src="/images/logo.png 1.svg" alt="Concinnity Logo" class="img-fluid mb-4" style="max-height: 40px" />
+            <p class="text-muted">
+              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+              nostrud exercitation ullamco laboris nisi ut aliquip ex.
+            </p>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h5 class="fw-bold mb-3">Useful Links</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">About</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Blog</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Contact</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Tools</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h5 class="fw-bold mb-3">Services</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">SEO Audit</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Ecommerce SEO</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">International SEO</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Data Analysis</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Data Architecture</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h5 class="fw-bold mb-3">Company</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">About Us</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Careers</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Press</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Partners</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Support</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h5 class="fw-bold mb-3">Connect</h5>
+            <div class="d-flex flex-column gap-3">
+              <a href="#" class="text-muted text-decoration-none"><i class="bi bi-facebook me-2"></i>Facebook</a>
+              <a href="#" class="text-muted text-decoration-none"><i class="bi bi-twitter me-2"></i>Twitter</a>
+              <a href="#" class="text-muted text-decoration-none"><i class="bi bi-linkedin me-2"></i>LinkedIn</a>
+              <a href="#" class="text-muted text-decoration-none"><i class="bi bi-instagram me-2"></i>Instagram</a>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4" />
+
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <p class="text-muted mb-0">Copyright 2025 Concinnity Limited.</p>
+          </div>
+          <div class="col-lg-6 text-lg-end">
+            <div class="d-flex justify-content-lg-end gap-3">
+              <a href="#" class="text-muted"><i class="bi bi-facebook fs-5"></i></a>
+              <a href="#" class="text-muted"><i class="bi bi-twitter fs-5"></i></a>
+              <a href="#" class="text-muted"><i class="bi bi-linkedin fs-5"></i></a>
+              <a href="#" class="text-muted"><i class="bi bi-instagram fs-5"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      document.querySelectorAll(".dropdown-submenu > a").forEach(function (el) {
+        el.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          let submenu = this.nextElementSibling;
+          if (submenu) {
+            submenu.classList.toggle("show");
+          }
+        });
+      });
+
+      // Close submenu when parent closes
+      document.querySelectorAll(".dropdown").forEach(function (dropdown) {
+        dropdown.addEventListener("hidden.bs.dropdown", function () {
+          this.querySelectorAll(".dropdown-menu.show").forEach(function (
+            submenu
+          ) {
+            submenu.classList.remove("show");
+          });
+        });
+      });
+    </script>
+  </body>
+
+</html>

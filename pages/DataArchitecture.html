@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Data Architecture</title>
+
+    <!-- Bootstrap + Inter font -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+      :root {
+        --brand: #ff7a1a;
+        /* orange accent */
+        --ink: #121212;
+        /* main text */
+        --muted: #6b7280;
+        /* paragraph gray */
+        --grid: #f2f2f3;
+        /* bg grid */
+        --radius: 16px;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        color: var(--ink);
+        background:
+          repeating-linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 56px),
+          repeating-linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 56px),
+          #fff;
+        background-attachment: fixed;
+      }
+
+      /* Layout helpers */
+      .container-narrow {
+        max-width: 980px;
+      }
+
+      .section-block {
+        padding: 64px 0;
+      }
+
+      .block-muted {
+        background: #fafafa;
+      }
+
+      /* HERO */
+      .title {
+        letter-spacing: .1px;
+        margin-bottom: .25rem;
+        text-align: center;
+      }
+
+      .title span {
+        color: var(--brand);
+      }
+
+      .crumbs {
+        font-size: .95rem;
+        color: #9aa0a6;
+        margin: .35rem 0 1rem;
+        text-align: center;
+      }
+
+      .crumbs a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .crumbs .sep {
+        margin: 0 .25rem;
+      }
+
+      .hero-banner {
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, .07);
+        margin-top: 100px;
+      }
+
+      .lead-claim {
+        font-size: 1.45rem;
+        line-height: 1.55;
+        font-weight: 700;
+        color: #555;
+        text-align: center;
+        max-width: 816px;
+        margin: 0 auto .35rem;
+      }
+
+      .lead-claim .hl {
+        color: var(--brand);
+      }
+
+      .intro {
+        color: var(--muted);
+        font-size: 1rem;
+        text-align: center;
+        max-width: 820px;
+        margin: 0 auto;
+      }
+
+      .approach {
+
+        display: flex;
+        justify-content: space-between;
+        width: 984px;
+        height: 305px;
+        margin: 100px auto;
+        background: #F0F2F1;
+        padding: 17px 84px 17px 181px;
+
+      }
+
+      .approach-text {
+        color: #FF7E00;
+      }
+
+      .approach-img {
+        display: flex;
+        justify-content: center;
+        padding-right: 100px;
+        padding-top: 80px;
+      }
+
+      /* spacing between icon and text on mobile */
+      .badge-icon {
+        width: 121px;
+        height: 121px;
+        border-radius: 20px;
+        background: rgba(255, 122, 26, .1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 121px;
+      }
+
+      .badge-icon img {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+      }
+
+
+      /* keep text column width similar to design on large screens */
+      @media (min-width:992px) {
+        .lead-claim {
+          font-size: 1.5rem;
+        }
+      }
+
+      /* SERVICES */
+      .section-heading {
+        font-weight: 700;
+        margin-bottom: .25rem;
+      }
+
+      .section-sub {
+        color: var(--brand);
+        font-weight: 600;
+        margin-bottom: .75rem;
+      }
+
+      .section-copy {
+        color: var(--muted);
+      }
+
+      .service-pill {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border: 1px solid #e5e7eb;
+        /* light gray border */
+        border-radius: 12px;
+        background: #fff;
+
+        padding: 16px;
+        /* equal padding all sides */
+        height: 100px;
+        /* matches Figma (344 × 100 box) */
+        font-weight: 500;
+
+        transition: 0.2s ease;
+      }
+
+      .service-pill img {
+        width: 28px;
+        /* slightly bigger logo */
+        height: 28px;
+        object-fit: contain;
+      }
+
+      .service-pill:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+        border-color: var(--brand);
+        /* orange border on hover */
+      }
+
+      /* DETAILS */
+      .card-img {
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, .06);
+      }
+
+      .detail h4 {
+        font-weight: 700;
+        margin-bottom: .5rem;
+      }
+
+      .detail .accent {
+        color: var(--brand);
+      }
+
+      .detail p {
+        color: var(--muted);
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/images/logo.png 1.svg" alt="Concinnity Logo" height="33" />
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link fw-semibold active" href="/">Home</a>
+            </li>
+
+            <!-- Solutions Dropdown with Nested Submenus -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                Solutions
+              </a>
+              <ul class="dropdown-menu">
+                <!-- Marketing Submenu -->
+                <li class="dropdown-submenu dropend">
+                  <a class="dropdown-item dropdown-toggle" href="#">
+                    Marketing
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="/pages/ecommerce-seo.html">Ecommerce SEO</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/pages/InternationalSeo.html">International SEO</a>
+                    </li>
+                    <li><a class="dropdown-item" href="t/pages/LocalSeo.html">Local SEO</a></li>
+                    <li><a class="dropdown-item" href="/pages/SeoAudit.html">SEO Audit</a></li>
+                    <li>
+                      <a class="dropdown-item" href="/pages/OraganicExposure.html">Organic Exposure</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <!-- Tech Submenu -->
+                <li class="dropdown-submenu dropend">
+                  <a class="dropdown-item dropdown-toggle" href="#"> Tech </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="/pages/DataArchitecture.html">Data Architecture</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/pages/Tech-system-implementation.html">System
+                        Implementation</a>
+                    </li>
+                    <li><a class="dropdown-item" href="/pages/Tech-data-Analysis.html">Data Analysis</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/contact.html">Contact Us</a>
+            </li>
+          </ul>
+
+          <button class="btn btn-outline-orange rounded-pill px-4">Tools</button>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- ========== HERO ========== -->
+    <header class="py-4">
+      <div class="container container-narrow">
+        <h1 class="title display-5 fw-semibold">Data <span>Architecture</span></h1>
+
+        <div class="crumbs">
+          <a href="#">Home</a><span class="sep">›</span>
+          <a href="#">Solutions</a><span class="sep">›</span>
+          <a href="#">Tech</a><span class="sep">›</span>
+          <span>Data Architecture</span>
+        </div>
+
+        <div class="hero-banner mb-4">
+          <img src="/images/dataarchitecture-hero.svg" alt="Hero" class="w-100 d-block">
+        </div>
+
+        <p class="lead-claim">
+          Good businesses are only <span class="hl">as good as their data</span>.
+          And data is only as valuable as its <span class="hl">usability</span>.
+        </p>
+        <p class="intro">
+          Access to data is paramount across all functions of a business and to all of its stakeholders.
+          Data architecture is a system of models and rules that govern how your data is collected, stored, and used.
+          It’s crucial to get it right and avoid wasted opportunities.
+        </p>
+      </div>
+    </header>
+
+
+    <!-- ==============APPROACH =========== -->
+    <section class="approach">
+      <div class="approach-img">
+        <img src="/images/theappraoch-logo.svg" width="121px" height="121px" alt="">
+      </div>
+
+      <div class="approach-right-text">
+        <h1 class="approach-heading" style="font-weight: bold; font-size: 32px;">The <span
+            class="approach-text">Approach</span></h1>
+        <p style="color: #171717;">When you work with us, we focus on the flexibility and robustness of your data
+          architecture and the systems
+          you use. We hear your needs, planning for the future usage and gathering of data and then we find out the most
+          appropriate methods to serve you at present and well into the future. The idea is to make sure that you stay
+          in complete control of your data and don’t allow any hosting vendors to prevent you accessing every tiny bit
+          of information that could be essential to you in the long run.</p>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section class="section-block">
+      <div class="container container-narrow">
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-6">
+            <h3 class="section-heading fw-bold">Our Services</h3>
+            <div class="section-sub fw-bold" style="font-size: 32px;">For Your Data</div>
+            <p class="section-copy">
+              Your data should be exactly that: your data. We use four key steps to make sure you stay in control and
+              keep every bit of information so you can use it to your advantage...
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <div class="row g-3">
+              <div class="col-12 col-sm-6">
+                <div class="service-pill">
+                  <img src="/images/technology-auditing-logo.svg" alt="">
+                  <span>Technology Auditing</span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="service-pill">
+                  <img src="/images/consulting-logo.svg" alt="">
+                  <span>Consulting</span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="service-pill">
+                  <img src="/images/consulting-logo.svg" alt="">
+                  <span>Implementation</span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="service-pill">
+                  <img src="/images/implementation-logo.svg" alt="">
+                  <span>Post-Implementation Support</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DETAILS ========== -->
+    <section class="section-block block-muted">
+      <div class="container container-narrow">
+
+        <!-- Technology Auditing -->
+        <div class="row align-items-center gy-4 mb-5">
+          <div class="col-md-6">
+            <div class="card-img">
+              <img src="/images/techonology-auditing-img.svg" class="w-100 d-block" alt="Technology Auditing">
+            </div>
+          </div>
+          <div class="col-md-6 detail">
+            <h4>Technology <span class="accent">auditing</span></h4>
+            <p>
+              is the first step. Investigating every piece of technology you use in your business is a crucial step on
+              the road to Concinnity understanding what you have got and what you need. We use SWOT analysis – a
+              strategic planning technique to help you identify your Strengths, Weaknesses, Opportunities and Threats in
+              relation to your business, your competition and your project planning procedures.
+            </p>
+          </div>
+        </div>
+
+        <!-- Consulting -->
+        <div class="row align-items-center gy-4 mb-5">
+          <div class="col-md-6 order-md-2">
+            <div class="card-img">
+              <img src="/images/consulting-img.svg" class="w-100 d-block" alt="Consulting">
+            </div>
+          </div>
+          <div class="col-md-6 detail">
+            <h4><span class="accent">Consulting</span></h4>
+            <p>
+              with us is the second step. Working with your team in getting the right data architecture is at the heart
+              of this strategy. We look at all sorts of data architecture solutions and we help set your goals when it
+              comes to their implementation.
+            </p>
+          </div>
+        </div>
+
+        <!-- Implementation -->
+        <div class="row align-items-center gy-4 mb-5">
+          <div class="col-md-6">
+            <div class="card-img">
+              <img src="/images/implementation-img.svg" class="w-100 d-block" alt="Implementation">
+            </div>
+          </div>
+          <div class="col-md-6 detail">
+            <h4><span class="accent">Implementation</span></h4>
+            <p>
+              is the key step, alongside the actual development of these solutions. Building and implementing the most
+              suitable solution for your business and its future is vital for your success. You will also learn the best
+              ways to use your new solutions to get the best out of them.
+            </p>
+          </div>
+        </div>
+
+        <!-- Post-implementation -->
+        <div class="row align-items-center gy-4">
+          <div class="col-md-6 order-md-2">
+            <div class="card-img">
+              <img src="/images/post-implementation-img.svg" class="w-100 d-block" alt="System Support">
+            </div>
+          </div>
+          <div class="col-md-6 detail">
+            <h4>Post-implementation <span class="accent">system support</span></h4>
+            <p>
+              is the last step. Periodic data architecture reviews will be carried out so that you are always in a
+              position to assess the performance of your data solutions and system. Whenever new requirements are needed
+              then adaptations to your programme will be made hand-in-hand with you, including general support over a
+              period of time and training for you and your team wherever and whenever necessary.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="py-5 border-top">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <img src="/images/logo.png 1.svg" alt="Concinnity Logo" class="img-fluid mb-4" style="max-height: 40px" />
+            <p class="text-muted">
+              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+              nostrud exercitation ullamco laboris nisi ut aliquip ex.
+            </p>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h5 class="fw-bold mb-3">Useful Links</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">About</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Blog</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Contact</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Tools</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h5 class="fw-bold mb-3">Services</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">SEO Audit</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Ecommerce SEO</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">International SEO</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Data Analysis</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Data Architecture</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h5 class="fw-bold mb-3">Company</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">About Us</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Careers</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Press</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Partners</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Support</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h5 class="fw-bold mb-3">Connect</h5>
+            <div class="d-flex flex-column gap-3">
+              <a href="#" class="text-muted text-decoration-none"><i class="bi bi-facebook me-2"></i>Facebook</a>
+              <a href="#" class="text-muted text-decoration-none"><i class="bi bi-twitter me-2"></i>Twitter</a>
+              <a href="#" class="text-muted text-decoration-none"><i class="bi bi-linkedin me-2"></i>LinkedIn</a>
+              <a href="#" class="text-muted text-decoration-none"><i class="bi bi-instagram me-2"></i>Instagram</a>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4" />
+
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <p class="text-muted mb-0">Copyright 2025 Concinnity Limited.</p>
+          </div>
+          <div class="col-lg-6 text-lg-end">
+            <div class="d-flex justify-content-lg-end gap-3">
+              <a href="#" class="text-muted"><i class="bi bi-facebook fs-5"></i></a>
+              <a href="#" class="text-muted"><i class="bi bi-twitter fs-5"></i></a>
+              <a href="#" class="text-muted"><i class="bi bi-linkedin fs-5"></i></a>
+              <a href="#" class="text-muted"><i class="bi bi-instagram fs-5"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      document.querySelectorAll(".dropdown-submenu > a").forEach(function (el) {
+        el.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          let submenu = this.nextElementSibling;
+          if (submenu) {
+            submenu.classList.toggle("show");
+          }
+        });
+      });
+
+      // Close submenu when parent closes
+      document.querySelectorAll(".dropdown").forEach(function (dropdown) {
+        dropdown.addEventListener("hidden.bs.dropdown", function () {
+          this.querySelectorAll(".dropdown-menu.show").forEach(function (
+            submenu
+          ) {
+            submenu.classList.remove("show");
+          });
+        });
+      });
+    </script>
+  </body>
+
+</html>

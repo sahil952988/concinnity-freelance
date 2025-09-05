@@ -20,9 +20,9 @@
 
   <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 w-100" style="z-index: 1000">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="/">
           <img src="images/logo_company.png" alt="Concinnity Logo" height="33" />
         </a>
 
@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link fw-semibold active" href="index.html">Home</a>
+              <a class="nav-link fw-semibold active" href="/">Home</a>
             </li>
 
             <!-- Solutions Dropdown with Nested Submenus -->
@@ -49,15 +49,15 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="ecommerce-seo.html">Ecommerce SEO</a>
+                      <a class="dropdown-item" href="/pages/ecommerce-seo.html">Ecommerce SEO</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="temp/InternationalSeo.html">International SEO</a>
+                      <a class="dropdown-item" href="/pages/InternationalSeo.html">International SEO</a>
                     </li>
-                    <li><a class="dropdown-item" href="temp/LocalSeo.html">Local SEO</a></li>
-                    <li><a class="dropdown-item" href="temp/SeoAudit.html">SEO Audit</a></li>
+                    <li><a class="dropdown-item" href="/pages/LocalSeo.html">Local SEO</a></li>
+                    <li><a class="dropdown-item" href="/pages/SeoAudit.html">SEO Audit</a></li>
                     <li>
-                      <a class="dropdown-item" href="temp/OraganicExposure.html">Organic Exposure</a>
+                      <a class="dropdown-item" href="/pages/OraganicExposure.html">Organic Exposure</a>
                     </li>
                   </ul>
                 </li>
@@ -67,28 +67,26 @@
                   <a class="dropdown-item dropdown-toggle" href="#"> Tech </a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="temp/DataArchitecture.html">Data Architecture</a>
+                      <a class="dropdown-item" href="/pages/DataArchitecture.html">Data Architecture</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="temp/Tech-system-implementation.html">System Implementation</a>
+                      <a class="dropdown-item" href="/pages/Tech-system-implementation.html">System Implementation</a>
                     </li>
-                    <li><a class="dropdown-item" href="temp/Tech-data-Analysis.html">Data Analysis</a></li>
+                    <li><a class="dropdown-item" href="/pages/Tech-data-Analysis.html">Data Analysis</a></li>
                   </ul>
                 </li>
               </ul>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="temp/blog.html">Blog</a>
+              <a class="nav-link" href="/pages/blog.html">Blog</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact Us</a>
+              <a class="nav-link" href="/pages/contact.html">Contact Us</a>
             </li>
           </ul>
 
-          <button class="btn btn-outline-orange rounded-pill px-4">
-            Tools
-          </button>
+          <button class="btn btn-outline-orange rounded-pill px-4">Tools</button>
         </div>
       </div>
     </nav>
@@ -402,10 +400,13 @@
         </div>
 
         <div class="text-center mt-5">
-          <button class="btn btn-outline-orange btn-lg rounded px-5 py-3">
-            Book My Strategy Call
-          </button>
+          <a href="/pages/contact.html">
+            <button class="btn btn-outline-orange btn-lg rounded px-5 py-3">
+              Book My Strategy Call
+            </button>
+          </a>
         </div>
+
       </div>
     </section>
 

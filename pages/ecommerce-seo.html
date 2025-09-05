@@ -17,6 +17,8 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
 
+    <link rel="stylesheet" href="/css/styles.css">
+
     <style>
       :root {
         --orange-primary: #ff7e00;
@@ -303,10 +305,10 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 position-sticky top-0" style="z-index: 1000">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <img src="/images/logo.png 1.svg" alt="Concinnity Logo" class="img-fluid" />
+        <a class="navbar-brand" href="/">
+          <img src="/images/logo.png 1.svg" alt="Concinnity Logo" height="33" />
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -316,32 +318,66 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link fw-semibold active" href="index.html">Home</a>
+              <a class="nav-link fw-semibold active" href="/">Home</a>
             </li>
+
+            <!-- Solutions Dropdown with Nested Submenus -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                 Solutions
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">SEO Services</a></li>
-                <li><a class="dropdown-item" href="#">AI Solutions</a></li>
-                <li><a class="dropdown-item" href="#">Digital Strategy</a></li>
+                <!-- Marketing Submenu -->
+                <li class="dropdown-submenu dropend">
+                  <a class="dropdown-item dropdown-toggle" href="#">
+                    Marketing
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="/pages/ecommerce-seo.html">Ecommerce SEO</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/pages/InternationalSeo.html">International SEO</a>
+                    </li>
+                    <li><a class="dropdown-item" href="/pages/LocalSeo.html">Local SEO</a></li>
+                    <li><a class="dropdown-item" href="/pages/SeoAudit.html">SEO Audit</a></li>
+                    <li>
+                      <a class="dropdown-item" href="/pages/OraganicExposure.html">Organic Exposure</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <!-- Tech Submenu -->
+                <li class="dropdown-submenu dropend">
+                  <a class="dropdown-item dropdown-toggle" href="#"> Tech </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="/pages/DataArchitecture.html">Data Architecture</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/pages/Tech-system-implementation.html">System
+                        Implementation</a>
+                    </li>
+                    <li><a class="dropdown-item" href="/pages/Tech-data-Analysis.html">Data Analysis</a></li>
+                  </ul>
+                </li>
               </ul>
             </li>
+
             <li class="nav-item">
-              <a class="nav-link" href="Blog.html">Blog</a>
+              <a class="nav-link" href="/pages/blog.html">Blog</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact Us</a>
+              <a class="nav-link" href="/pages/contact.html">Contact Us</a>
             </li>
           </ul>
 
-          <button class="btn btn-outline-primary-orange rounded-pill px-4">
-            Tools
-          </button>
+          <button class="btn btn-outline-orange rounded-pill px-4">Tools</button>
         </div>
       </div>
     </nav>
+    >
+
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -423,7 +459,7 @@
           </div>
 
           <div class="col-lg-6 text-lg-end">
-            <img src="images/e-commerce_seo/laptop.png" />
+            <img src="/images/e-commerce_seo/laptop.png" />
           </div>
         </div>
       </div>
@@ -457,7 +493,7 @@
 
           <div class="col-lg-4">
             <div class="text-center">
-              <img src="images/e-commerce_seo/orange.png" />
+              <img src="/images/e-commerce_seo/orange.png" />
             </div>
           </div>
 
@@ -694,6 +730,31 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      document.querySelectorAll(".dropdown-submenu > a").forEach(function (el) {
+        el.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          let submenu = this.nextElementSibling;
+          if (submenu) {
+            submenu.classList.toggle("show");
+          }
+        });
+      });
+
+      // Close submenu when parent closes
+      document.querySelectorAll(".dropdown").forEach(function (dropdown) {
+        dropdown.addEventListener("hidden.bs.dropdown", function () {
+          this.querySelectorAll(".dropdown-menu.show").forEach(function (
+            submenu
+          ) {
+            submenu.classList.remove("show");
+          });
+        });
+      });
+    </script>
   </body>
 
 </html>

@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SEO – Beyond Rankings</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap"
+      rel="stylesheet" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+
+    <style>
+      :root {
+        --orange-primary: #ff7e00;
+        --orange-hover: #e66d00;
+        --text-gray: #595959;
+        --text-dark: #171717;
+        --border-light: #f0f2f1;
+      }
+
+      body {
+        color: var(--text-dark);
+      }
+
+      .text-orange {
+        color: var(--orange-primary) !important;
+      }
+
+      .btn-orange {
+        --bs-btn-color: #fff;
+        --bs-btn-bg: var(--orange-primary);
+        --bs-btn-border-color: var(--orange-primary);
+        --bs-btn-hover-bg: var(--orange-hover);
+        --bs-btn-hover-border-color: var(--orange-hover);
+      }
+
+      /* Page shells */
+      .page-wrap {
+        background: radial-gradient(1200px 600px at 50% -220px, #fff4e7 0%, #fff 55%)
+      }
+
+      .section {
+        padding-block: 3.5rem;
+      }
+
+      .section-sm {
+        padding-block: 2rem;
+        width: 984px;
+        margin: 80px auto;
+      }
+
+      /* Hero */
+      .hero-title {
+        font-weight: 700;
+        letter-spacing: .2px;
+      }
+
+      .hero-sub {
+        font-weight: 700;
+      }
+
+      .crumbs a {
+        color: #000;
+        text-decoration: none;
+      }
+
+      .crumbs a:hover {
+        color: #000;
+      }
+
+      .section-spacing {
+        width: 984px;
+        margin: 80px auto;
+      }
+
+      /* Search input */
+      .search-wrap {
+        background: #fff;
+        border: 1px solid var(--border-light);
+        border-radius: 999px;
+        padding: .4rem .5rem;
+        max-width: 540px;
+        margin-inline: auto;
+      }
+
+      .search-wrap input {
+        border: 0;
+        outline: 0;
+        box-shadow: none;
+      }
+
+      .search-wrap .btn {
+        border-radius: 999px;
+      }
+
+      /* ===== Features (2×2) ===== */
+      .card-soft {
+        background: #fff;
+        border: 1px solid var(--border-light);
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+        text-align: left;
+        /* ensure not centered by parent */
+      }
+
+      .mini-title {
+        font-size: 18px;
+        /* fixed unit */
+        letter-spacing: .02em;
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: .5rem;
+        /* acts like mb-2 */
+        text-align: left;
+      }
+
+      .mini-desc {
+        color: var(--text-gray);
+        font-size: .95rem;
+        text-align: justify;
+      }
+
+      /* ===== Dark section (your .panel/.grid/.card markup) ===== */
+      .darkpannel {
+        background: #171717;
+      }
+
+      .panel {
+        background: #171717;
+        color: #eaeaea;
+        padding: 2.5rem;
+        width: 984px;
+        margin: 0 auto;
+      }
+
+      .panel .eyebrow {
+        color: var(--orange-primary);
+        font-weight: 800;
+        text-transform: none;
+        display: block;
+        text-align: center;
+        margin-bottom: .25rem;
+      }
+
+      .panel .title {
+        text-align: center;
+        margin: 0 0 .25rem 0;
+        font-weight: 700;
+      }
+
+      .panel .lead {
+        color: #cfcfcf;
+        max-width: 820px;
+        margin: 0 auto 1.25rem auto;
+        text-align: center;
+      }
+
+      /* grid of 3 dark cards */
+      .panel .grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      @media (min-width: 768px) {
+        .panel .grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      .panel .card {
+        position: relative;
+        background: #141414;
+        border: 1px solid #242424;
+        border-radius: 14px;
+        padding: 1.25rem 1.25rem 1.1rem;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, .28);
+      }
+
+      .panel .card h3 {
+        position: relative;
+        color: #ffa45a;
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin: 0 0 .35rem 0;
+        padding-left: .4rem;
+      }
+
+      /* subtle orange “pill/outline” accent near title */
+      .panel .card h3::before {
+        content: "";
+        position: absolute;
+        left: -8px;
+        top: -6px;
+        width: 44px;
+        height: 28px;
+        border: 1px solid var(--orange-primary);
+        border-radius: 999px;
+        opacity: .4;
+      }
+
+      .panel .card p {
+        color: #a9a9a9;
+        font-size: .95rem;
+        margin-bottom: .9rem;
+      }
+
+      .panel .card .btn {
+        display: inline-block;
+        border: 1px solid var(--orange-primary);
+        color: #eaeaea;
+        border-radius: 10px;
+        padding: .4rem .9rem;
+        text-decoration: none;
+      }
+
+      .panel .card .btn:hover {
+        background: var(--orange-primary);
+        border-color: var(--orange-primary);
+        color: #fff;
+      }
+
+      .result-oriented {
+        width: 984px;
+        margin: 80px auto;
+      }
+
+      .benfit-section {
+        width: 984px;
+        margin: 80px auto;
+        background: #171717;
+        border-radius: 12px;
+      }
+
+      .benfit-section .col-lg-8 {
+        padding: 50px 80px 50px 81px;
+        border-radius: 2px;
+      }
+
+      /* Why card */
+      .why-card {
+        background: #121212;
+        color: #eaeaea;
+        border: 1px solid #1f1f1f;
+        border-radius: 12px;
+        padding: 2rem;
+      }
+
+      /* Image helpers */
+      .img-raised {
+        border-radius: 12px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, .12);
+        border: 1px solid var(--border-light);
+      }
+
+
+      .concinnity__inner {
+        max-width: 820px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .concinnity__title {
+        color: var(--orange-primary);
+        font-weight: 800;
+        font-size: clamp(24px, 3.4vw, 32px);
+        margin: 0 0 16px;
+        letter-spacing: .2px;
+      }
+
+      .concinnity__lead {
+        color: var(--text-gray);
+        line-height: 1.75;
+        font-size: 16px;
+        margin: 0 auto 20px;
+      }
+
+      .concinnity__sub {
+        color: var(--text-dark);
+        font-weight: 600;
+        margin: 0 0 28px;
+        font-size: 18px;
+      }
+
+      .concinnity__cta {
+        display: inline-block;
+        background: var(--orange-primary);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 18px;
+        padding: 12px 40px;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(255, 126, 0, .25);
+        transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      }
+
+      .concinnity__cta:hover {
+        background: var(--orange-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(255, 126, 0, .28);
+      }
+
+      .concinnity__cta:active {
+        transform: translateY(0);
+        opacity: .95;
+      }
+
+
+      /* Responsive hero sizes */
+      @media (min-width:992px) {
+        .hero-title {
+          font-size: 2.9rem;
+        }
+      }
+
+      @media (max-width:991.98px) {
+        .hero-title {
+          font-size: 2.1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="page-wrap">
+
+    <!-- ====== NAVBAR (yours) ====== -->
+    <!-- include your existing navbar here -->
+
+    <main>
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top shadow-sm">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <img src="/images/logo.png 1.svg" alt="Concinnity Logo" height="33" />
+          </a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link fw-semibold active" href="/">Home</a>
+              </li>
+
+              <!-- Solutions Dropdown with Nested Submenus -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                  Solutions
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- Marketing Submenu -->
+                  <li class="dropdown-submenu dropend">
+                    <a class="dropdown-item dropdown-toggle" href="#">
+                      Marketing
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="/pages/ecommerce-seo.html">Ecommerce SEO</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/pages/InternationalSeo.html">International SEO</a>
+                      </li>
+                      <li><a class="dropdown-item" href="/pages/LocalSeo.html">Local SEO</a></li>
+                      <li><a class="dropdown-item" href="/pages/SeoAudit.html">SEO Audit</a></li>
+                      <li>
+                        <a class="dropdown-item" href="/pages/OraganicExposure.html">Organic Exposure</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <!-- Tech Submenu -->
+                  <li class="dropdown-submenu dropend">
+                    <a class="dropdown-item dropdown-toggle" href="#"> Tech </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="/pages/DataArchitecture.html">Data Architecture</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/pages/Tech-system-implementation.html">System
+                          Implementation</a>
+                      </li>
+                      <li><a class="dropdown-item" href="/pages/Tech-data-Analysis.html">Data Analysis</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/pages/blog.html">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/pages/contact.html">Contact Us</a>
+              </li>
+            </ul>
+
+            <button class="btn btn-outline-orange rounded-pill px-4">Tools</button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- HERO -->
+      <section class="section text-center">
+        <div class="container">
+          <h1 class="hero-title mb-2">Search Engine<br />Optimization That Goes</h1>
+          <h2 class="hero-sub text-orange mb-3">Beyond Rankings</h2>
+
+          <div class="crumbs small mb-3">
+            <a href="#">Home</a> &rsaquo; <a href="#">Solutions</a> &rsaquo; <a href="#">Marketing</a> &rsaquo; <a
+              href="#">SEO</a> &rsaquo; <span class="text-orange">Organic Exposure</span>
+          </div>
+
+          <p class="text-muted mb-3">Enter your website to get a free SEO analysis!</p>
+
+          <form class="search-wrap d-flex align-items-center gap-2">
+            <input type="url" class="form-control" placeholder="Enter your website to get a free SEO analysis!" />
+            <button class="btn  px-4" type="submit"><img src="/images/organicExposure/search icon.svg" alt=""></button>
+          </form>
+
+          <div class="mx-auto" style="max-width:820px; margin-top: 100px;">
+            <p class="mb-0 " style="font-size: 24px; color: #595959;">
+              Jumpstart your online presence with our SEO experts in Hong Kong.
+              Concinnity provides you with high-level SEO to gain an edge in the </p>
+            <p class="text-orange" style="font-size:32px; font-weight: 700;">Digital Marketing industry</p>
+            <p style="color: #595959;">Map out the digital success of your business with the help of Concinnity Limited.
+              Our company specializes
+              in providing competitive digital marketing services including search engine optimization (SEO) campaigns.
+              We help companies in driving real and quantifiable results.
+              Through the assistance of our highly experienced digital marketing strategists, expect that you’ll receive
+              services of highest value. We provide our clients with the most updated practices and methods to ensure
+              their brand remains on top of the searches.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEO beyond rankings -->
+      <section class="section-spacing">
+        <div class="">
+          <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+              <p class="text-orange mb-3 text-orange fw-bold" style="font-size: 32px;">SEO beyond rankings</p>
+
+              <div class="text-gray fs-6 line-height-22">
+                Let Concinnity take your brand beyond rankings and show you what performance-centric search engine
+                optimisation in Hong Kong is all about.
+                <br><br>
+                Supercharge your online presence with Concinnity’s Hong Kong search engine optimisation (SEO) services.
+                We provide quality SEO solutions that focus on more than just high search engine rankings. We also focus
+                on improving your online offering so that you maximise your business growth potential. As a trusted
+                expert in SEO marketing in Hong Kong, our strength lies in providing an array of cutting-edge online
+                services for businesses of all types and sizes.
+              </div>
+
+              <button class="btn btn-orange rounded-3 px-5 py-3 fw-medium fs-5 mt-4">
+                Let's Talk
+              </button>
+            </div>
+
+            <div class="col-lg-6 text-lg-end">
+              <img src="/images/InterantionalSeo/statistics.svg" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4-up mini features -->
+      <section class="section-sm">
+        <div class="container">
+          <div class="text-center mb-4">
+
+            <div class="text fw-semibold" style="font-size: 32px;">
+              <p>
+                <span>We are the</span>
+                <span class="text-orange">best SEO agency in Hong Kong</span> for all
+              </p>
+              <p style="margin-top: -20px;">your digital marketing needs</p>
+            </div>
+
+            <!-- 2 x 2 grid -->
+            <div class="row row-cols-1 row-cols-md-2 g-3" style="margin-top: 50px;">
+              <div class="col">
+                <div class="p-3 card-soft h-100">
+                  <div class="mini-title mb- text-orange" style="text-align: left;">STRATEGIES THAT WORK</div>
+                  <div class="mini-desc">We are not just digital marketers. We are strategists. Our team has helped
+                    businesses achieve 2X to 5X their revenues. The digital marketing strategies we utilize strictly
+                    follow standards and rules implemented by Google. With every method we implement, you can be
+                    confident that your brand will show up on the searches.</div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="p-3 card-soft h-100">
+                  <div class="mini-title mb- text-orange" style="text-align: left;">RESULTS THAT SPEAK FOR THEMSELVES
+                  </div>
+                  <div class="mini-desc">Every strategy we create is designed to drive results that matter to your
+                    business. We follow a stringent methodology with the best digital marketing practices behind every
+                    step. Our team of SEO experts can help you come up the most effective approach to provide you with
+                    satisfying outcome. At Concinnity Limited. </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="p-3 card-soft h-100">
+                  <div class="mini-title mb- text-orange" style="text-align: left;">EXPERTS THAT STAND BEHIND YOU</div>
+                  <div class="mini-desc">Think of us as your very own team. Each member of our team has years of
+                    experience under their belts. We are dedicated to your success as much as we are with every strategy
+                    developed for your business. </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="p-3 card-soft h-100">
+                  <div class="mini-title mb- text-orange" style="text-align: left;">DELIVERABLES THAT ARE ALWAYS ON
+                    TIME</div>
+                  <div class="mini-desc">We know how important every second is to your business, and this is one aspect
+                    we translate to our work. Our team follows a timeline to get deliverables to you so you can start
+                    seeing progress. Achieve your digital success with real experts driving real results. Get started
+                    with us today!</div>
+                </div>
+              </div>
+            </div>
+            <!-- /2 x 2 grid -->
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Dark band: Map out your digital success -->
+      <section class="section darkpannel">
+        <div class="panel">
+
+          <h2 class="title text-orange">Map out your digital success</h2>
+
+          <p class="lead">
+            Concinlivity is your trusted partner when it comes to mapping out the digital success of your business.
+            Our competitive SEO solutions are data-driven and results-oriented so you can expect real and quantifiable
+            results.
+            We craft effective strategies designed to match your niche and achieve your goals.
+          </p>
+
+          <div class="grid">
+            <!-- Card 1 -->
+            <article class="card">
+              <h3 class="text-orange">Digital Marketing Services</h3>
+              <p>
+                Learn how you can increase your sales, leads and profit. We help amp up your marketing initiatives by
+                targeting various online channels. Take your digital campaign to the next level with Concinnity Limited.
+                Grow your business when you partner with us today.
+              </p>
+              <a class="btn" href="#">Find Out More</a>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="card">
+              <h3 class="text-orange">Search Engine Optimization</h3>
+              <p>
+                Be there when your customers are searching for your business. When you choose to work with us, we’ll
+                show you how to drive organic and quality traffic to your website. We utilize data-driven strategy to
+                deliver results that will be advantageous to your brand.
+              </p>
+              <a class="btn" href="#">Find Out More</a>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="card">
+              <h3 class="text-orange">Lead Generation Strategies</h3>
+              <p>
+                Finding leads is one of the challenges of many businesses encounter. For companies it is critical for
+                them to maintain a consistent amount of leads, but how can you do that? How can you convert them into
+                paying customers? Our team has the best answer.
+              </p>
+              <a class="btn" href="#">Find Out More</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alternating image + text blocks -->
+      <section class="result-oriented">
+        <div class="container">
+          <div class="row g-2 align-items-center mb-4">
+            <div class="col-lg-6">
+              <img src="/images/organicExposure/result-oriented.svg" width="398px" height="290px"
+                class="img-fluid img-raised" alt="Office">
+            </div>
+            <div class="col-lg-6">
+              <h4 class="mb-2 text-orange fw-semibold" style="font-size: 32px;">Results-oriented SEO Services</h4>
+              <p class="text-secondary mb-0">
+                With Concinnity Limited as your SEO company in Hong Kong, it is easier to manage your expectations. We
+                make sure you get higher and better traffic, steady conversion rates, and long-term results that will
+                drive growth to your business. We believe that the best way to measure performance is by looking into
+                pertinent data – and this is one area we pay attention to. We want to give your business positive change
+                so it is vital that we only resort to data-driven SEO practices with long-lasting impact.
+              </p>
+            </div>
+          </div>
+
+          <div class="row g-4 align-items-center">
+            <div class="col-lg-6 order-2 order-lg-1">
+              <h4 class="mb-2 text-orange fw-semibold" style="font-size: 32px;">Flexible Audience-targeting Strategies
+              </h4>
+              <p class="text-secondary mb-0">
+                The beauty of SEO is that it allows you to target all sorts of audiences; you can target the ones near
+                you or even those based overseas.
+                <br><br>
+                Local SEO is focused on acquiring leads in a certain geographical area, usually utilizing location-based
+                keywords and phrases. This type of SEO makes perfect sense as almost one-third of mobile searches are
+                location-based. Aside from that, half of local searches influence mobile users to visit a physical store
+                or business location within just a day. Through Concinnity Limited’s local SEO campaign, you will see
+                how your business can benefit from targeting nearby customers.
+              </p>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2">
+              <img src="/images/organicExposure/Flexible Audience.svg" width="398px" height="366px"
+                class="img-fluid img-raised" alt="Glasses on notebook">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Benefits Section -->
+      <section class="benfit-section bg-dark-custom">
+        <div class="container">
+          <div class="row align-items-center">
+
+
+            <div class="col-12 col-lg-4 order-2 order-lg-1">
+              <div class="text-center text-lg-start" style="padding-left: 50px;">
+                <img class="img-fluid" src="/images/InterantionalSeo/starIcon.svg" alt="Star icon">
+              </div>
+            </div>
+
+            <!-- Text -->
+            <div class="col-12 col-lg-8 order-1 order-lg-2">
+              <h2 class="font-manrope fw-bold mb-4" style="font-size: 2rem">
+                <span class="text-orange">Why does</span>
+                <span style="color: #595959;">search engine</span>
+                <br>
+                <span style="color: #595959;">Optimization</span> <span class="text-orange">matter?</span>
+              </h2>
+
+              <p class=" text-light fs-6 mb-0 line-height-22">
+                As a seasoned SEO agency in Hong Kong, we are often asked the same question: why does SEO matter?
+                <br>
+                <br>
+                To answer this question, we must go back to why we need to optimize our websites for the search engines.
+                SEO helps a website get a good rank at the search engine results pages (SERPs). When the best SEO
+                practices are applied, your website will have a greater chance of appearing on the SERPs whenever a
+                potential client enters a targeted keyword on a search engine’s search bar. With an improved SEO, you
+                rank goes high, which means better visibility to more potential clients.
+                <br>
+                <br>
+                One important thing to remember is that your target market is already searching for you. All you have to
+                do is be easily found. And that is where SEO can help you.
+                <br><br>
+                With good SERP rankings (let’s say a high rank on the first page), you are in the best position to drive
+                new clients to your business. Every time your site appears on the search results, you are only a few
+                clicks away from making a successful conversion or sale.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- The Concinnity Way Section -->
+      <section class="concinnity">
+        <div class="concinnity__inner">
+          <h2 class="concinnity__title">The Concinnity difference</h2>
+
+          <p class="concinnity__lead" style="color: #171717;">
+            At Concinnity, we are not just digital marketers. We are providers of SEO services in Hong Kong. We are
+            experienced strategists who combine our skills in research, web development, SEO, content creation and
+            marketing so that we can help businesses get the best out of their digital platforms, allowing them to both
+            grow and succeed.
+            <br><br>
+            We have helped businesses in Hong Kong to increase their revenue by up to 5 TIMES thanks to our SEO and
+            digital marketing strategies. We take pride in these results. We take pride in helping businesses to grow
+            online. We want the same for you.
+            <br><br>
+            Need search engine optimisation marketing in Hong Kong? Start your journey to online success with Concinnity
+            today!
+          </p>
+
+          <a class="concinnity__cta" href="../contact.html" aria-label="Let's Talk">Let Us Talk</a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-5 border-top">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <img src="/images/logo.png 1.svg" alt="Concinnity Logo" class="img-fluid mb-4" style="max-height: 40px" />
+            <p class="text-muted">
+              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+              nostrud exercitation ullamco laboris nisi ut aliquip ex.
+            </p>
+          </div>
+          <div class="col-lg-2">
+            <h5 class="fw-bold mb-3">Useful Links</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">About</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Blog</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Contact</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Tools</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-2">
+            <h5 class="fw-bold mb-3">Services</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">SEO Audit</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Ecommerce SEO</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">International SEO</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Data Analysis</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Data Architecture</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-2">
+            <h5 class="fw-bold mb-3">Company</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">About Us</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Careers</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Press</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Partners</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-muted text-decoration-none">Support</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-2">
+            <h5 class="fw-bold mb-3">Connect</h5>
+            <div class="d-flex flex-column gap-3">
+              <a href="#" class="text-muted text-decoration-none">
+                <i class="bi bi-facebook me-2"></i>Facebook
+              </a>
+              <a href="#" class="text-muted text-decoration-none">
+                <i class="bi bi-twitter me-2"></i>Twitter
+              </a>
+              <a href="#" class="text-muted text-decoration-none">
+                <i class="bi bi-linkedin me-2"></i>LinkedIn
+              </a>
+              <a href="#" class="text-muted text-decoration-none">
+                <i class="bi bi-instagram me-2"></i>Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4" />
+
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <p class="text-muted mb-0">Copyright 2025 Concinnity Limited.</p>
+          </div>
+          <div class="col-lg-6 text-lg-end">
+            <div class="d-flex justify-content-lg-end gap-3">
+              <a href="#" class="text-muted"><i class="bi bi-facebook fs-5"></i></a>
+              <a href="#" class="text-muted"><i class="bi bi-twitter fs-5"></i></a>
+              <a href="#" class="text-muted"><i class="bi bi-linkedin fs-5"></i></a>
+              <a href="#" class="text-muted"><i class="bi bi-instagram fs-5"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      document.querySelectorAll(".dropdown-submenu > a").forEach(function (el) {
+        el.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          let submenu = this.nextElementSibling;
+          if (submenu) {
+            submenu.classList.toggle("show");
+          }
+        });
+      });
+
+      // Close submenu when parent closes
+      document.querySelectorAll(".dropdown").forEach(function (dropdown) {
+        dropdown.addEventListener("hidden.bs.dropdown", function () {
+          this.querySelectorAll(".dropdown-menu.show").forEach(function (
+            submenu
+          ) {
+            submenu.classList.remove("show");
+          });
+        });
+      });
+    </script>
+  </body>
+
+</html>
