@@ -526,16 +526,29 @@
     <script> lucide.createIcons(); </script>
 
     <!-- Nested submenu toggle -->
+    <!-- Extra JS for toggle support -->
     <script>
-      document.querySelectorAll(".dropdown-submenu > a").forEach((el) => {
-        el.addEventListener("click", function (e) {
-          e.preventDefault(); e.stopPropagation();
-          const submenu = this.nextElementSibling; if (submenu) submenu.classList.toggle("show");
+      // Toggle second-level submenus (desktop + mobile)
+      document.querySelectorAll('.dropdown-submenu > a').forEach(trigger => {
+        trigger.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const submenu = this.nextElementSibling; // the nested .dropdown-menu
+          if (!submenu) return;
+
+          // close other open submenus at the same level
+          const siblings = this.closest('.dropdown-menu')?.querySelectorAll('.dropdown-menu.show') || [];
+          siblings.forEach(m => { if (m !== submenu) m.classList.remove('show'); });
+
+          submenu.classList.toggle('show');
         });
       });
-      document.querySelectorAll(".dropdown").forEach((dropdown) => {
-        dropdown.addEventListener("hidden.bs.dropdown", function () {
-          this.querySelectorAll(".dropdown-menu.show").forEach((m) => m.classList.remove("show"));
+
+      // When the parent dropdown fully closes, hide any open submenus
+      document.querySelectorAll('.dropdown').forEach(dd => {
+        dd.addEventListener('hidden.bs.dropdown', () => {
+          dd.querySelectorAll('.dropdown-menu.show').forEach(m => m.classList.remove('show'));
         });
       });
     </script>

@@ -535,27 +535,29 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Extra JS for toggle support -->
     <script>
-      document.querySelectorAll(".dropdown-submenu > a").forEach(function (el) {
-        el.addEventListener("click", function (e) {
+      // Toggle second-level submenus (desktop + mobile)
+      document.querySelectorAll('.dropdown-submenu > a').forEach(trigger => {
+        trigger.addEventListener('click', function (e) {
           e.preventDefault();
           e.stopPropagation();
 
-          let submenu = this.nextElementSibling;
-          if (submenu) {
-            submenu.classList.toggle("show");
-          }
+          const submenu = this.nextElementSibling; // the nested .dropdown-menu
+          if (!submenu) return;
+
+          // close other open submenus at the same level
+          const siblings = this.closest('.dropdown-menu')?.querySelectorAll('.dropdown-menu.show') || [];
+          siblings.forEach(m => { if (m !== submenu) m.classList.remove('show'); });
+
+          submenu.classList.toggle('show');
         });
       });
 
-      // Close submenu when parent closes
-      document.querySelectorAll(".dropdown").forEach(function (dropdown) {
-        dropdown.addEventListener("hidden.bs.dropdown", function () {
-          this.querySelectorAll(".dropdown-menu.show").forEach(function (
-            submenu
-          ) {
-            submenu.classList.remove("show");
-          });
+      // When the parent dropdown fully closes, hide any open submenus
+      document.querySelectorAll('.dropdown').forEach(dd => {
+        dd.addEventListener('hidden.bs.dropdown', () => {
+          dd.querySelectorAll('.dropdown-menu.show').forEach(m => m.classList.remove('show'));
         });
       });
     </script>

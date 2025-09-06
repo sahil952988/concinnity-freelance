@@ -182,7 +182,47 @@ body {
   margin-top: -0.25rem;
 }
 
+/* Keep your big desktop gutters */
 .navbar {
   padding-left: 228px;
   padding-right: 230px;
+}
+
+/* Make the navbar mobile-friendly */
+@media (max-width: 991.98px) {
+  .navbar {
+    padding-left: 16px;
+    /* comfy mobile padding */
+    padding-right: 16px;
+  }
+
+  /* Let dropdowns stack inside the collapsed menu instead of flying out */
+  .navbar .dropdown-menu {
+    position: static;
+    /* stops overflow off-screen */
+    float: none;
+    width: 100%;
+    margin: .25rem 0 0;
+    border: 0;
+    box-shadow: none;
+  }
+
+  /* Indent second-level (submenu) a bit */
+  .dropdown-submenu>.dropdown-menu {
+    margin-left: 1rem;
+  }
+
+  /* Keep long menus scrollable on small screens */
+  .navbar .dropdown-menu {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+}
+
+/* Optional: nicer tap targets for submenu items */
+@media (max-width: 991.98px) {
+  .dropdown-item {
+    padding-top: .65rem;
+    padding-bottom: .65rem;
+  }
 }
