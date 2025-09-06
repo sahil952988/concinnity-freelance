@@ -317,13 +317,29 @@ a {
 
 }
 
+/* --==========NEWSLETTER==========-- */
+.newsletter-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin-top: 80px;
+}
 
+.newsletter-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/images/wave.svg");
+  background-size: cover;
+  z-index: 0;
+}
 
-/* Newsletter */
 .newsletter-section {
   background: var(--primary-orange);
   border-radius: 20px;
+  position: relative;
+  z-index: 1;
 }
+
 
 /* Progress segments */
 .progress-bar-custom {
