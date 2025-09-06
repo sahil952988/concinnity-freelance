@@ -20,18 +20,38 @@
     <link rel="stylesheet" href="/css/styles.css">
 
     <style>
+      /* ===== Variables ===== */
       :root {
         --orange-primary: #ff7e00;
         --orange-hover: #e66d00;
         --text-gray: #595959;
         --text-dark: #171717;
         --border-light: #f0f2f1;
+
+        /* NEW: global max content width */
+        --page-max: 1444px;
+      }
+
+      /* ===== Base ===== */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
       }
 
       body {
         font-family: "Inter", sans-serif;
-        background-color: white;
+        background-color: #fff;
         overflow-x: hidden;
+        color: var(--text-dark);
+      }
+
+      img,
+      video,
+      svg,
+      canvas {
+        max-width: 100%;
+        height: auto;
       }
 
       .font-manrope {
@@ -58,20 +78,22 @@
         border-color: var(--border-light) !important;
       }
 
+      /* Buttons */
       .btn-orange {
         background-color: var(--orange-primary);
         border-color: var(--orange-primary);
-        color: white;
+        color: #fff;
         transition: all 0.3s ease;
       }
 
       .btn-orange:hover {
         background-color: var(--orange-hover);
         border-color: var(--orange-hover);
-        color: white;
+        color: #fff;
         transform: translateY(-2px);
       }
 
+      /* Cards */
       .card-shadow {
         box-shadow: 0px 4px 20px rgba(210, 210, 210, 0.15);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -94,18 +116,29 @@
         line-height: 1.4;
       }
 
+      /* ===== Hero ===== */
       .hero-section {
-        background: linear-gradient(135deg,
-            rgba(255, 126, 0, 0.05) 0%,
-            rgba(255, 126, 0, 0.1) 100%);
+        background: linear-gradient(135deg, rgba(255, 126, 0, 0.05) 0%, rgba(255, 126, 0, 0.1) 100%);
         min-height: 50vh;
       }
 
+      /* was fixed width -> make responsive with cap */
       .hero-text {
-        width: 690px;
+        max-width: 690px;
+        width: 100%;
         margin: 0 auto;
       }
 
+      /* center/cap the container-fluid inside hero on ultrawide */
+      @media (min-width: 1444px) {
+        .hero-section .container-fluid {
+          max-width: var(--page-max);
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      /* Breadcrumbs */
       .crumbs {
         font-size: .95rem;
         margin: .35rem 0 1rem;
@@ -121,20 +154,25 @@
         margin: 0 .25rem;
       }
 
+      /* ===== Stats / Headings ===== */
       .stats-number {
         font-size: 4rem;
         line-height: 1;
       }
 
-      .section-spacing {
-        width: 984px;
+      /* ===== Section shells (were fixed 984px) ===== */
+      .section-spacing,
+      .benfit-section,
+      .brand-visibility {
+        max-width: 984px;
+        width: 100%;
         margin: 80px auto;
-
+        padding-left: 16px;
+        padding-right: 16px;
       }
 
+      /* Benefit section specifics */
       .benfit-section {
-        width: 984px;
-        margin: 80px auto;
         border-radius: 2px;
       }
 
@@ -143,16 +181,20 @@
         border-radius: 2px;
       }
 
+      /* Feature cards */
       .feature-card {
         height: 100%;
         min-height: 350px;
       }
 
-      /* //// SECOND STATISCTICS///// */
+      /* ===== Second Statistics ===== */
       .stat-section {
         font-family: Arial, sans-serif;
         max-width: 984px;
+        width: 100%;
         margin: 80px auto;
+        padding-left: 16px;
+        padding-right: 16px;
         line-height: 1.6;
         display: flex;
         align-items: flex-start;
@@ -177,7 +219,6 @@
 
       .highlight {
         color: #ff6600;
-        /* Orange */
         font-size: 65px;
         font-weight: bold;
       }
@@ -199,18 +240,18 @@
         font-size: 15px;
       }
 
-      /* ///// FEATURE VISIBILITY /////// */
+      /* ===== Brand Visibility ===== */
       .brand-visibility {
         display: flex;
-        justify-content: center;
         justify-content: space-between;
-        width: 984px;
-        margin: 80px auto;
+        /* remove duplicate center rule */
+        gap: 24px;
         margin-top: 150px;
       }
 
       .brand-visibility-text {
-        width: 649px;
+        max-width: 649px;
+        width: 100%;
       }
 
       .brand-visibility-title {
@@ -218,12 +259,11 @@
       }
 
       .Concinnity-text {
-        width: 815px;
+        max-width: 815px;
+        width: 100%;
       }
 
-
-      /* /// Concinnity WAY //// */
-      /* Concinnity Section */
+      /* ===== Concinnity Section ===== */
       .concinnity {
         padding: 72px 16px 96px;
         background:
@@ -282,6 +322,26 @@
         opacity: .95;
       }
 
+      /* ===== CAP LAYOUT AT 1444px ===== */
+      /* Bootstrap containers stop growing past 1444px */
+      @media (min-width: 1400px) {
+
+        .container,
+        .container-lg,
+        .container-xl,
+        .container-xxl {
+          max-width: var(--page-max);
+        }
+      }
+
+      /* ===== Responsive ===== */
+      @media (max-width: 992px) {
+        .brand-visibility {
+          flex-direction: column;
+          margin-top: 80px;
+        }
+      }
+
       @media (max-width: 768px) {
         .stats-number {
           font-size: 3rem;
@@ -291,17 +351,29 @@
           font-size: 2.5rem !important;
         }
 
-        .section-spacing {
-          padding: 40px 0;
+        .section-spacing,
+        .benfit-section,
+        .stat-section,
+        .brand-visibility {
+          margin: 56px auto;
         }
 
         .benfit-section {
-          padding: 50px 80px 50px 81px;
+          padding: 40px 16px;
         }
 
         .feature-card {
           min-height: auto;
           margin-bottom: 2rem;
+        }
+
+        .stat-section {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .stat-text {
+          width: auto;
         }
       }
 

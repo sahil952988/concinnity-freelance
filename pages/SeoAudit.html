@@ -20,22 +20,65 @@
     <link rel="stylesheet" href="/css/styles.css">
 
     <style>
+      /* ===== Variables ===== */
       :root {
         --orange-primary: #ff7e00;
         --orange-hover: #e66d00;
         --text-gray: #595959;
         --text-dark: #171717;
         --border-light: #f0f2f1;
+
+        /* global max content width */
+        --page-max: 1444px;
+      }
+
+      /* ===== Base ===== */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
       }
 
       body {
         color: var(--text-dark);
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        background: #fff;
+        overflow-x: hidden;
+        padding-top: 76px;
+        /* room for fixed navbar */
       }
 
+      img,
+      svg,
+      video,
+      canvas {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* cap Bootstrap containers on ultrawide */
+      @media (min-width: 1400px) {
+
+        .container,
+        .container-lg,
+        .container-xl,
+        .container-xxl {
+          max-width: var(--page-max);
+        }
+      }
+
+      /* ===== Utilities ===== */
       .text-orange {
         color: var(--orange-primary) !important;
       }
 
+      /* Buttons */
       .btn-orange {
         --bs-btn-color: #fff;
         --bs-btn-bg: var(--orange-primary);
@@ -47,7 +90,19 @@
         font-weight: 700;
       }
 
-      /* Page shells */
+      .btn-outline-orange {
+        border: 2px solid var(--orange-primary);
+        color: var(--orange-primary);
+        background: transparent;
+        transition: all .25s ease;
+      }
+
+      .btn-outline-orange:hover {
+        background: var(--orange-primary);
+        color: #fff;
+      }
+
+      /* ===== Page shells ===== */
       .page-wrap {
         background: radial-gradient(1200px 600px at 50% -220px, #fff4e7 0%, #fff 55%);
       }
@@ -56,7 +111,7 @@
         padding-block: 3.5rem;
       }
 
-      /* Hero */
+      /* ===== Hero ===== */
       .hero-title {
         font-weight: 700;
         letter-spacing: .2px;
@@ -69,9 +124,10 @@
 
       .crumbs a:hover {
         color: #000;
+        text-decoration: underline;
       }
 
-      /* Search input */
+      /* ===== Search input ===== */
       .search-wrap {
         background: #fff;
         border: 1px solid var(--border-light);
@@ -91,9 +147,12 @@
         border-radius: 999px;
       }
 
-      /* Audit */
+      /* ===== Audit block ===== */
       .audit-wrap {
         padding: 2.25rem 1.25rem;
+        background: #fff;
+        border: 1px solid var(--border-light);
+        border-radius: 16px;
       }
 
       .audit-title {
@@ -123,20 +182,24 @@
       .feature p {
         margin: 0;
         color: var(--text-dark);
-        line-height: 1.4;
+        line-height: 1.45;
         font-size: .95rem;
       }
 
-      /* Brand visibility */
+      /* ===== Brand visibility (was fixed width) ===== */
       .brand-visibility {
         display: flex;
         justify-content: space-between;
-        width: 984px;
+        gap: 24px;
+        max-width: 984px;
+        width: 100%;
         margin: 80px auto;
+        padding: 0 16px;
       }
 
       .brand-visibility-text {
-        width: 649px;
+        max-width: 649px;
+        color: var(--text-gray);
       }
 
       .brand-visibility-title {
@@ -145,14 +208,35 @@
         margin-top: 50px;
       }
 
-      /* Help Customers */
+      /* ===== Help Customers (was fixed width + inline widths) ===== */
       .help-customer {
         display: flex;
-        width: 984px;
+        gap: 24px;
+        align-items: flex-start;
+        max-width: 984px;
+        width: 100%;
         margin: 80px auto;
+        padding: 0 16px;
       }
 
-      /* “What to expect” section */
+      .help-customer .leftside img {
+        width: 100%;
+        height: auto;
+      }
+
+      .help-customer .rightside h1 {
+        width: auto !important;
+        font-size: clamp(24px, 2vw + 12px, 32px) !important;
+        line-height: 1.25;
+      }
+
+      .help-customer .rightside p {
+        width: auto !important;
+        max-width: 680px;
+        color: var(--text-gray);
+      }
+
+      /* ===== “What to expect” section ===== */
       .title {
         font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2rem);
         font-weight: 800;
@@ -179,9 +263,31 @@
         font-size: .98rem;
       }
 
-      /* Footer */
+      /* ===== Footer ===== */
       footer img {
-        max-height: 40px
+        max-height: 40px;
+      }
+
+      /* ===== Responsiveness ===== */
+      @media (max-width: 992px) {
+        .brand-visibility {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .brand-visibility-title {
+          margin-top: 0;
+        }
+
+        .help-customer {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .search-wrap {
+          max-width: 100%;
+        }
       }
     </style>
   </head>

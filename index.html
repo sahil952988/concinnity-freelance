@@ -91,6 +91,7 @@
       </div>
     </nav>
 
+
     <!-- Hero Section -->
     <section class="hero-section d-flex flex-column align-items-center" style="padding-top: 100px">
       <div class="container hero-content">
@@ -595,6 +596,55 @@
         });
       });
     </script>
+    \
+
+    <script>
+      // Eases out (fast → slow)
+      function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+      // Parse "+120%" / "400+" / "60%" into {prefix, number, suffix}
+      function parseParts(text) {
+        const match = text.trim().match(/^(\D*)(\d+(?:\.\d+)?)(\D*)$/);
+        if (!match) return { prefix: "", number: 0, suffix: "" };
+        const [, prefix, num, suffix] = match;
+        return { prefix, number: parseFloat(num), suffix };
+      }
+
+      function animateCounter(el, target, prefix, suffix, duration = 1200) {
+        const startTime = performance.now();
+        function frame(now) {
+          const t = Math.min((now - startTime) / duration, 1);
+          const eased = easeOutCubic(t);
+          const value = Math.round(target * eased);
+          el.textContent = `${prefix}${value}${suffix}`;
+          if (t < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+
+      // Scope to the Success Metrics grid so we don't touch the section title
+      const metricsSection = document.querySelector('section.py-5.bg-primary-orange.text-white');
+      if (metricsSection) {
+        const counters = metricsSection.querySelectorAll('.row.g-4.text-center h2.display-4');
+
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            const el = entry.target;
+            const { prefix, number, suffix } = parseParts(el.textContent);
+
+            // animate from 0 → original number, keeping your exact + / % placement
+            animateCounter(el, number, prefix, suffix, 1200);
+
+            obs.unobserve(el); // run once
+          });
+        }, { threshold: 0.5 });
+
+        counters.forEach(el => observer.observe(el));
+      }
+    </script>
+
   </body>
 
 </html>

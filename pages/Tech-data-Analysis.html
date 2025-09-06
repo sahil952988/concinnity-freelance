@@ -23,6 +23,15 @@
         --grid: #f2f2f3;
         /* bg grid */
         --radius: 16px;
+        --page-max: 1444px;
+        /* cap on ultrawide */
+      }
+
+      /* Base */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
       }
 
       html,
@@ -38,6 +47,29 @@
           repeating-linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 56px),
           #fff;
         background-attachment: fixed;
+        overflow-x: hidden;
+        padding-top: 76px;
+        /* clears fixed navbar */
+      }
+
+      img,
+      svg,
+      video,
+      canvas {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Cap Bootstrap containers at 1444px */
+      @media (min-width:1400px) {
+
+        .container,
+        .container-lg,
+        .container-xl,
+        .container-xxl {
+          max-width: var(--page-max);
+        }
       }
 
       /* Layout helpers */
@@ -84,7 +116,8 @@
         border-radius: 22px;
         overflow: hidden;
         box-shadow: 0 10px 28px rgba(0, 0, 0, .07);
-        margin-top: 100px;
+        margin-top: 24px;
+        /* was 100px */
       }
 
       .lead-claim {
@@ -109,30 +142,60 @@
         margin: 0 auto;
       }
 
+      @media (min-width:992px) {
+        .lead-claim {
+          font-size: 1.5rem;
+        }
+      }
+
+      /* Optional theme pill (used in navbar) */
+      .btn-outline-orange {
+        border: 2px solid var(--brand);
+        color: var(--brand);
+        background: transparent;
+        border-radius: 999px;
+        padding: .5rem 1rem;
+        font-weight: 600;
+        transition: all .2s ease;
+      }
+
+      .btn-outline-orange:hover {
+        background: var(--brand);
+        color: #fff;
+      }
+
+      /* ================== APPROACH (responsive) ================== */
       .approach {
-
-        display: flex;
-        justify-content: space-between;
-        width: 984px;
-        height: 305px;
-        margin: 100px auto;
+        max-width: 984px;
+        width: 100%;
+        margin: 80px auto;
         background: #F0F2F1;
-        padding: 17px 84px 17px 181px;
+        border-radius: var(--radius);
+        padding: 24px;
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 24px;
+        align-items: center;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, .06);
+      }
 
+      .approach-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .approach-heading {
+        margin: 0 0 .5rem;
+        font-weight: 700;
+        font-size: 32px;
       }
 
       .approach-text {
         color: #FF7E00;
       }
 
-      .approach-img {
-        display: flex;
-        justify-content: center;
-        padding-right: 100px;
-        padding-top: 80px;
-      }
-
-      /* spacing between icon and text on mobile */
+      /* (kept for any icon badge you might use elsewhere) */
       .badge-icon {
         width: 121px;
         height: 121px;
@@ -150,11 +213,13 @@
         object-fit: contain;
       }
 
-
-      /* keep text column width similar to design on large screens */
-      @media (min-width:992px) {
-        .lead-claim {
-          font-size: 1.5rem;
+      /* Stack on small screens */
+      @media (max-width:767.98px) {
+        .approach {
+          grid-template-columns: 1fr;
+          text-align: center;
+          padding: 20px;
+          margin: 56px auto;
         }
       }
 
@@ -178,24 +243,17 @@
         display: flex;
         align-items: center;
         gap: 10px;
-
         border: 1px solid #e5e7eb;
-        /* light gray border */
         border-radius: 12px;
         background: #fff;
-
         padding: 16px;
-        /* equal padding all sides */
-        height: 100px;
-        /* matches Figma (344 × 100 box) */
+        min-height: 100px;
         font-weight: 500;
-
-        transition: 0.2s ease;
+        transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
       }
 
       .service-pill img {
         width: 28px;
-        /* slightly bigger logo */
         height: 28px;
         object-fit: contain;
       }
@@ -204,7 +262,6 @@
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
         border-color: var(--brand);
-        /* orange border on hover */
       }
 
       /* DETAILS */
