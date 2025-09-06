@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Personal Finance You need to stop Believing — Concinnity</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Your shared site CSS (keeps 1444 cap + gutters + nav/footer styles) -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+      /* ---------- Page-scoped styles (kept light; relies on your global CSS) ---------- */
+      :root {
+        --muted: #6c757d;
+        --soft: #f8f9fa;
+        --orange: #ff7e00;
+        --grid: rgba(0, 0, 0, .04);
+        --page-max: 1444px;
+      }
+
+      /* Cap containers (same as other pages) */
+      @media (min-width:1400px) {
+
+        .container,
+        .container-lg,
+        .container-xl,
+        .container-xxl {
+          max-width: var(--page-max);
+        }
+      }
+
+      /* Soft grid background + warm wash like your Figma */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          linear-gradient(to right, var(--grid) 1px, transparent 1px) 0 0/64px 64px,
+          linear-gradient(to bottom, var(--grid) 1px, transparent 1px) 0 0/64px 64px,
+          radial-gradient(1200px 600px at 50% -200px, rgba(255, 126, 0, .09), transparent 60%);
+        z-index: -1;
+      }
+
+      .article-title {
+        font-family: "Manrope", system-ui, sans-serif;
+        font-weight: 600;
+        font-size: clamp(28px, 2.6vw + 18px, 44px);
+        line-height: 1.1;
+        margin-bottom: .4rem;
+      }
+
+      /* Sizes & spacing */
+      :root {
+        --meta-icon: 16px;
+        /* img icon size */
+        --meta-gap: 6px;
+        /* space between an icon and its text */
+        --meta-sep-gap: 12px;
+        /* space around the dot separator */
+        --meta-dot: #ffb26a;
+        /* dot color */
+      }
+
+      /* keep items aligned */
+      .article-meta {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        /* we'll control spacing manually */
+      }
+
+      /* icon + text spacing */
+      .article-meta>span {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--meta-gap);
+      }
+
+      /* size the images like the old icons */
+      .article-meta img {
+        width: var(--meta-icon);
+        height: var(--meta-icon);
+        object-fit: contain;
+        flex: 0 0 auto;
+      }
+
+      /* the dot separator */
+      .article-meta .dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--meta-dot);
+        margin: 0 var(--meta-sep-gap);
+        /* ← adds the space you asked for */
+        flex: 0 0 auto;
+      }
+
+      /* optional: slightly smaller on tiny screens */
+      @media (max-width:480px) {
+        :root {
+          --meta-icon: 14px;
+          --meta-sep-gap: 8px;
+        }
+      }
+
+
+      .cover {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, .08);
+        background: #fff;
+      }
+
+      .article-body p {
+        color: #232323;
+      }
+
+      .article-body .leadish {
+        color: #555;
+      }
+
+      .article-body .para {
+        margin-bottom: 1.15rem;
+      }
+
+      /* //// QUOTE  */
+
+      :root {
+        --quote-bg: #F0F2F1;
+        --q-pad-x: 80px;
+        /* left/right padding of the box */
+        --q-pad-y: 30px;
+        /* top/bottom padding of the box */
+        --q-icon: 32px;
+        /* icon size */
+        --q-gap: 12px;
+        /* space between icon and text */
+      }
+
+      .quote {
+        position: relative;
+        background: var(--quote-bg);
+        border: 0;
+        /* no border */
+        border-radius: 12px;
+        /* make room for the icon on the left */
+        padding: var(--q-pad-y) var(--q-pad-x) var(--q-pad-y) calc(var(--q-pad-x) + var(--q-icon) + var(--q-gap));
+        box-shadow: none;
+      }
+
+      .quote p {
+        margin: 0;
+        color: #3F3F3F;
+        line-height: 1.7;
+        font-size: 0.975rem;
+      }
+
+      /* Icon sits inside the padding box, top-left */
+      .quote::before {
+        content: "";
+        position: absolute;
+        width: var(--q-icon);
+        height: var(--q-icon);
+        left: var(--q-pad-x);
+        top: var(--q-pad-y);
+        background-image: url("/images/blogdetail/quoteicon.svg");
+        /* your Figma export */
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      /* Mobile sizing */
+      @media (max-width:991.98px) {
+        :root {
+          --q-pad-x: 20px;
+          --q-pad-y: 16px;
+          --q-icon: 24px;
+          --q-gap: 10px;
+        }
+
+        .quote {
+          padding: var(--q-pad-y) var(--q-pad-x) var(--q-pad-y) calc(var(--q-pad-x) + var(--q-icon) + var(--q-gap));
+        }
+      }
+
+
+      /* Sidebar cards */
+      .side-card {
+        border: 0;
+        background: #fff;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .side-card .card-body {
+        padding: 1rem 1rem;
+      }
+
+      .category-item,
+      .recent-post {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: .75rem;
+        text-decoration: none;
+        color: #111;
+        padding: .75rem 1rem;
+        border-top: 1px solid #f1f3f5;
+      }
+
+      .category-item:hover {
+        background: var(--soft);
+      }
+
+      .recent-post {
+        justify-content: flex-start;
+      }
+
+      .recent-thumb {
+        width: 72px;
+        height: 56px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+
+      .recent-meta {
+        font-size: .75rem;
+        color: var(--muted);
+      }
+
+      /* Tag pills & next link */
+      .tag-pill {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 28px;
+        padding: .45rem .9rem;
+        color: #444;
+        display: inline-block;
+        margin: .35rem .35rem 0 0;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, .04);
+      }
+
+      .next-link a {
+        color: #111;
+        text-decoration: none;
+      }
+
+      .next-link a:hover {
+        color: var(--orange);
+      }
+
+      /* Tiny image gallery */
+      /* Two-up gallery that fills the article text width */
+      .mini-gallery-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        /* space between the two images */
+      }
+
+      .mini-gallery-2 img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        /* consistent height; change to taste (e.g., 16/9) */
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, .07);
+      }
+
+      /* Stack on small screens */
+      @media (max-width:576px) {
+        .mini-gallery-2 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+
+      /* Orange check list */
+      .tick {
+        color: var(--orange);
+        margin-right: .55rem;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!--  NAVBAR  (use your shared navbar; kept here so the file runs standalone) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="/"><img src="/images/logo.png 1.svg" alt="Concinnity" height="33"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="nav" class="collapse navbar-collapse">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link fw-semibold active" href="/">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Solutions</a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-submenu dropend">
+                  <a class="dropdown-item dropdown-toggle" href="#">Marketing</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/pages/ecommerce-seo.html">Ecommerce SEO</a></li>
+                    <li><a class="dropdown-item" href="/pages/InternationalSeo.html">International SEO</a></li>
+                    <li><a class="dropdown-item" href="/pages/LocalSeo.html">Local SEO</a></li>
+                    <li><a class="dropdown-item" href="/pages/SeoAudit.html">SEO Audit</a></li>
+                    <li><a class="dropdown-item" href="/pages/OraganicExposure.html">Organic Exposure</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown-submenu dropend">
+                  <a class="dropdown-item dropdown-toggle" href="#">Tech</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/pages/DataArchitecture.html">Data Architecture</a></li>
+                    <li><a class="dropdown-item" href="/pages/Tech-system-implementation.html">System Implementation</a>
+                    </li>
+                    <li><a class="dropdown-item" href="/pages/Tech-data-Analysis.html">Data Analysis</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/pages/blog.html">Blog</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/contact.html">Contact Us</a></li>
+          </ul>
+          <a class="btn btn-outline-orange rounded-pill px-4">Tools</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="py-4">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Main column -->
+          <div class="col-lg-8">
+
+            <!-- Title & meta -->
+            <header class="mb-2 mt-1">
+              <h1 class="article-title">About Personal Finance You need to stop Believing</h1>
+              <div class="d-flex align-items-center article-meta">
+                <span><img src="/images/blogdetail/peopleicon.svg" alt=""> <strong>credio</strong></span>
+                <span class="dot" aria-hidden="true"></span>
+                <span><img src="/images/blogdetail/calender.svg" alt=""> August 26, 2024</span>
+                <span class="dot" aria-hidden="true"></span>
+                <span><img src="/images/blogdetail/date.svg" alt=""> 25</span>
+              </div>
+
+
+            </header>
+
+            <!-- Cover -->
+            <figure class="cover my-3">
+              <img src="/images/blogdetail/blogdetailhero.svg" class="w-100" alt="Desk and laptop">
+            </figure>
+
+            <!-- Article -->
+            <article class="article-body">
+              <p class="para leadish">
+                we specialize in helping individuals and families regain control of their
+                financial future by repairing and improving their credit scores. Our team of
+                experts is dedicated to analyzing your credit report, identifying errors, and
+                working directly with credit bureaus to correct inaccuracies. We provide
+                personalized credit repair solutions tailored to your unique situation.
+              </p>
+
+              <p class="para">
+                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                and more recently with desktop publishing software like Aldus PageMaker including.
+              </p>
+
+              <!-- Quote -->
+              <div class="quote my-4">
+                <p><em>
+                    <strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit Ut elit tellus, luctus nec
+                      ullamcorper mattis, pulvinar dapibus leo.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
+                      luctus nec ullamcorper mattis, pulvinar dapibus leo.</strong>
+
+                  </em></p>
+              </div>
+
+
+              <p class="para">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's
+                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+                to
+                make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                typesetting, remaining essentially unchanged.
+              </p>
+
+              <!-- Tiny gallery -->
+              <div class="mini-gallery-2 my-3">
+                <img src="/images/blogdetail/blogdetail1.svg" alt="" loading="lazy">
+                <img src="/images/blogdetail/blogdetail2.svg" alt="" loading="lazy">
+              </div>
+
+              <h3 class="mt-5 mb-3 fw-bold">We Just Know Now Gonna Make</h3>
+              <p class="para">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into
+                electronic typesetting, remaining essentially unchanged.
+              </p>
+
+              <div class="row g-4 align-items-start">
+                <div class="col-md-6">
+                  <img class="w-100 rounded-3 shadow-sm" src="/images/blogdetail/blogdetail3.svg" alt="">
+                </div>
+                <div class="col-md-6">
+                  <ul class="list-unstyled m-0">
+                    <li class="mb-3"><i class="bi bi-check-circle-fill tick"></i> It has survived not only five
+                      centuries</li>
+                    <li class="mb-3"><i class="bi bi-check-circle-fill tick"></i> It has survived not only five
+                      centuries</li>
+                    <li class="mb-3"><i class="bi bi-check-circle-fill tick"></i> It has survived not only five
+                      centuries</li>
+                    <li class="mb-3"><i class="bi bi-check-circle-fill tick"></i> It has survived not only five
+                      centuries</li>
+                  </ul>
+                </div>
+              </div>
+
+              <p class="para mt-3">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's
+                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+                to
+                make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                typesetting, remaining essentially unchanged.
+              </p>
+
+              <!-- Tags + next -->
+              <hr class="my-5">
+              <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                <div class="flex-grow-1">
+                  <span class="me-2 fw-semibold">Tags:</span>
+                  <span class="tag-pill">Banking</span>
+                  <span class="tag-pill">Business</span>
+                  <span class="tag-pill">Consulting</span>
+                  <span class="tag-pill">Credit</span>
+                  <span class="tag-pill">Finance</span>
+                  <span class="tag-pill">Repair</span>
+                </div>
+                <div class="next-link">
+                  <a href="#"><span class="me-2">Next Post</span><i
+                      class="bi bi-arrow-right-short fs-4 align-middle"></i></a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="col-lg-4">
+            <div class="sticky-lg-top" style="top:24px">
+              <!-- Search -->
+              <div class="side-card mb-3">
+                <div class="card-body">
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-dark" type="submit"><i class="bi bi-search"></i></button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Categories -->
+              <div class="side-card mb-3">
+                <div class="card-body pb-0">
+                  <h6 class="fw-semibold mb-3">Popular Categories</h6>
+                </div>
+                <a class="category-item" href="#"><span>Consulting</span> <i class="bi bi-arrow-right"></i></a>
+                <a class="category-item" href="#"><span>Credit Repair</span> <i class="bi bi-arrow-right"></i></a>
+                <a class="category-item" href="#"><span>Finance</span> <i class="bi bi-arrow-right"></i></a>
+              </div>
+
+              <!-- Recent posts -->
+              <div class="side-card">
+                <div class="card-body pb-0">
+                  <h6 class="fw-semibold mb-2">Recent Posts</h6>
+                </div>
+                <a class="recent-post" href="#">
+                  <img class="recent-thumb" src="https://picsum.photos/seed/r1/160/120" alt="">
+                  <div>
+                    <div class="small fw-semibold">About Personal Finance You need to stop Believing</div>
+                    <div class="recent-meta">By credio • Aug 26, 2024</div>
+                  </div>
+                </a>
+                <a class="recent-post" href="#">
+                  <img class="recent-thumb" src="https://picsum.photos/seed/r2/160/120" alt="">
+                  <div>
+                    <div class="small fw-semibold">About Personal Finance You need to stop Believing</div>
+                    <div class="recent-meta">By credio • Aug 26, 2024</div>
+                  </div>
+                </a>
+                <a class="recent-post" href="#">
+                  <img class="recent-thumb" src="https://picsum.photos/seed/r3/160/120" alt="">
+                  <div>
+                    <div class="small fw-semibold">About Personal Finance You need to stop Believing</div>
+                    <div class="recent-meta">By credio • Aug 26, 2024</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <!--  FOOTER (use your shared footer)  -->
+    <footer class="footer-section">
+      <div class="footer-container">
+        <div class="row">
+          <div class="col-lg-5">
+            <img src="/images/logo_company.png" alt="Logo" class="img-fluid">
+            <p class="footer-description">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex.</p>
+          </div>
+          <div class="col-lg-2 offset-lg-3">
+            <h6 class="footer-title">Useful Links</h6>
+            <a href="#" class="footer-link">About</a>
+            <a href="#" class="footer-link">Blog</a>
+            <a href="#" class="footer-link">Contact</a>
+            <a href="#" class="footer-link">Tools</a>
+            <a href="#" class="footer-link">Privacy Policy</a>
+          </div>
+          <div class="col-lg-2">
+            <h6 class="footer-title">Services</h6>
+            <a href="#" class="footer-link">SEO Audit</a>
+            <a href="#" class="footer-link">Ecommerce SEO</a>
+            <a href="#" class="footer-link">International SEO</a>
+            <a href="#" class="footer-link">Data Analysis</a>
+            <a href="#" class="footer-link">Data Architecture</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <p class="copyright-text mb-0">Copyright 2025 Concinnity Limited.</p>
+            </div>
+            <div class="col-md-6 text-end">
+              <div class="social-icons justify-content-end">
+                <i class="bi bi-facebook social-icon"></i>
+                <i class="bi bi-twitter social-icon"></i>
+                <i class="bi bi-instagram social-icon"></i>
+                <i class="bi bi-youtube social-icon"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS + submenu handler -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // nested submenu toggle
+      document.querySelectorAll('.dropdown-submenu > a').forEach(a => {
+        a.addEventListener('click', e => {
+          e.preventDefault(); e.stopPropagation();
+          const m = a.nextElementSibling; if (!m) return;
+          a.closest('.dropdown-menu')?.querySelectorAll('.dropdown-menu.show').forEach(x => { if (x !== m) x.classList.remove('show'); });
+          m.classList.toggle('show');
+        });
+      });
+      document.querySelectorAll('.dropdown').forEach(dd => {
+        dd.addEventListener('hidden.bs.dropdown', () => dd.querySelectorAll('.dropdown-menu.show').forEach(m => m.classList.remove('show')));
+      });
+    </script>
+  </body>
+
+</html>

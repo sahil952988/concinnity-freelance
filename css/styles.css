@@ -42,6 +42,11 @@ body {
   /* clear fixed navbar */
 }
 
+a {
+  color: black;
+  text-decoration: none;
+}
+
 /* Typography helpers */
 .font-manrope {
   font-family: "Manrope", sans-serif;
@@ -237,22 +242,82 @@ body {
   transform: translateY(-3px);
 }
 
-/* Process */
+/* steps stack above the arrows */
 .process-step {
-  text-align: center;
+  z-index: 2;
 }
 
+.process-step img {
+  position: relative;
+}
+
+/* number bubble (matches your figma vibe) */
 .process-number {
-  width: 40px;
-  height: 40px;
-  background: #f0f2f1;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
+  background: #f3f5f7;
+  color: #222;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  margin: 0 auto 20px;
+  margin: 0 auto 14px;
 }
+
+/* connector arrows */
+.process-flow {
+  position: relative;
+}
+
+/* Default: hide arrows on small screens */
+.process-arrow {
+  display: none;
+  pointer-events: none;
+  opacity: .95;
+
+}
+
+/* Desktop: show and position the three arrows */
+@media (min-width: 992px) {
+  .process-arrow {
+    display: block;
+    position: absolute;
+    top: 106px;
+    /* vertical placement of the dashed arcs */
+    transform: translateX(-50%);
+    /* center each arrow on its left position */
+    z-index: 1;
+    /* behind icons/numbers, above background */
+    width: clamp(130px, 18vw, 130px);
+    /* responsive width like figma */
+  }
+
+  @media (min-width:1200px) and (max-width:1399.98px) {
+    .process-arrow {
+      width: clamp(90px, 10vw, 100px);
+    }
+  }
+
+  /* centers between col 1-2, 2-3, 3-4 (container has 4 equal cols) */
+  .arrow-12 {
+    left: 25%;
+  }
+
+  /* midpoint between 12.5% and 37.5% */
+  .arrow-23 {
+    left: 50%;
+  }
+
+  /* midpoint between 37.5% and 62.5% */
+  .arrow-34 {
+    left: 75%;
+  }
+
+
+}
+
+
 
 /* Newsletter */
 .newsletter-section {
