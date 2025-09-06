@@ -1,31 +1,54 @@
+/* ===========================
+   Concinnity – Global Styles
+   - Aligns all sections to the same width as navbar
+   - Caps layout at 1444px
+   - Desktop gutters: 228px left, 230px right
+   =========================== */
+
 :root {
   --primary-orange: #ff7e00;
+  --orange-hover: #e66d00;
   --text-gray: #595959;
   --text-dark: #171717;
   --success-green: #0abd8b;
   --error-red: #ff4c00;
   --light-bg: #f4f5f9;
+
+  /* Layout system */
+  --page-max: 1444px;
+  --gutter-l: 228px;
+  /* desktop left gutter */
+  --gutter-r: 230px;
+  /* desktop right gutter */
+}
+
+/* Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text-dark);
+  background-color: #fff;
   padding-top: 80px;
-  /* adjust based on navbar height */
+  /* clear fixed navbar */
 }
 
+/* Typography helpers */
 .font-manrope {
   font-family: "Manrope", sans-serif;
 }
 
 .text-primary-orange {
   color: var(--primary-orange);
-}
-
-.bg-primary-orange {
-  background-color: var(--primary-orange);
-}
-
-.border-primary-orange {
-  border-color: var(--primary-orange);
 }
 
 .text-gray {
@@ -40,28 +63,129 @@ body {
   color: var(--error-red);
 }
 
+.bg-primary-orange {
+  background-color: var(--primary-orange);
+}
+
 .bg-light-custom {
   background-color: var(--light-bg);
 }
 
+.border-primary-orange {
+  border-color: var(--primary-orange);
+}
+
+/* ========== Layout width + gutters ========== */
+
+/* Cap Bootstrap containers at 1444px on very wide screens */
+@media (min-width:1400px) {
+
+  .container,
+  .container-lg,
+  .container-xl,
+  .container-xxl {
+    max-width: var(--page-max);
+  }
+}
+
+/* Apply big desktop gutters to the whole page, and keep the fixed navbar aligned */
+@media (min-width:1200px) {
+  body {
+    padding-left: var(--gutter-l);
+    padding-right: var(--gutter-r);
+  }
+
+  .navbar.fixed-top {
+    left: var(--gutter-l) !important;
+    right: var(--gutter-r) !important;
+    width: auto !important;
+  }
+}
+
+/* Mobile/tablet comfortable side padding */
+@media (max-width:1199.98px) {
+  body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* ========== Navbar ========== */
+
+.navbar {
+  box-shadow: 0 2px 18px rgba(0, 0, 0, .05);
+}
+
+/* Large custom padding only for wide screens; collapse on mobile */
+@media (min-width:1200px) {
+  .navbar {
+    padding-left: 0;
+    /* gutters handled by fixed-top left/right above */
+    padding-right: 0;
+  }
+}
+
+@media (max-width:991.98px) {
+  .navbar {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* Mobile-friendly dropdown behavior inside collapsed menu */
+@media (max-width:991.98px) {
+  .navbar .dropdown-menu {
+    position: static;
+    float: none;
+    width: 100%;
+    margin: .25rem 0 0;
+    border: 0;
+    box-shadow: none;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+}
+
+/* Second-level submenu placement (desktop) */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -.25rem;
+}
+
+/* Buttons */
+.btn-outline-orange {
+  border: 2px solid var(--primary-orange);
+  color: var(--primary-orange);
+  background: transparent;
+  transition: all .3s ease;
+}
+
+.btn-outline-orange:hover {
+  background-color: var(--primary-orange);
+  color: #fff;
+  border-color: var(--primary-orange);
+}
+
+/* Hero */
 .hero-section {
-  background: linear-gradient(135deg,
-      rgba(255, 126, 0, 0.05) 0%,
-      rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(135deg, rgba(255, 126, 0, .05) 0%, #fff 100%);
   min-height: 100vh;
   position: relative;
+  isolation: isolate;
 }
 
 .hero-section::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-image: url("/grid-2.svg");
   background-size: cover;
-  opacity: 0.1;
+  opacity: .1;
   z-index: 0;
 }
 
@@ -70,61 +194,50 @@ body {
   z-index: 1;
 }
 
-.btn-outline-orange {
-  border: 2px solid var(--primary-orange);
-  color: var(--primary-orange);
-  background: transparent;
-  transition: all 0.3s ease;
-}
-
-.btn-outline-orange:hover {
-  background-color: var(--primary-orange);
-  color: white;
-  border-color: var(--primary-orange);
-}
-
+/* Cards */
 .audit-card {
   background: var(--light-bg);
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
 }
 
 .metric-card {
-  background: white;
-  border-radius: 10px;
+  background: #fff;
   border: 1px solid #f0f2f1;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
 }
 
 .service-card {
-  background: white;
-  border-radius: 15px;
+  background: #fff;
   border: 1px solid #f0f2f1;
-  box-shadow: 0 5px 20px rgba(57, 57, 57, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(57, 57, 57, .1);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(57, 57, 57, 0.15);
+  box-shadow: 0 10px 30px rgba(57, 57, 57, .15);
 }
 
 .why-card {
-  background: white;
-  border-radius: 10px;
+  background: #fff;
   border: 1px solid #f0f2f1;
-  transition: transform 0.3s ease;
+  border-radius: 10px;
+  transition: transform .3s ease;
 }
 
 .why-card.highlighted {
   border-color: var(--primary-orange);
-  box-shadow: 0 8px 20px rgba(100, 100, 100, 0.1);
+  box-shadow: 0 8px 20px rgba(100, 100, 100, .1);
 }
 
 .why-card:hover {
   transform: translateY(-3px);
 }
 
+/* Process */
 .process-step {
   text-align: center;
 }
@@ -137,15 +250,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  font-weight: 700;
   margin: 0 auto 20px;
 }
 
+/* Newsletter */
 .newsletter-section {
   background: var(--primary-orange);
   border-radius: 20px;
 }
 
+/* Progress segments */
 .progress-bar-custom {
   height: 12px;
   border-radius: 6px;
@@ -157,7 +272,8 @@ body {
   display: inline-block;
 }
 
-@media (max-width: 768px) {
+/* Mobile tweaks */
+@media (max-width:768px) {
   .hero-section h1 {
     font-size: 2.5rem !important;
   }
@@ -169,60 +285,98 @@ body {
   .service-card {
     margin-bottom: 1rem;
   }
-}
 
-/* Position nested dropdowns properly */
-.dropdown-submenu {
-  position: relative;
-}
-
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -0.25rem;
-}
-
-/* Keep your big desktop gutters */
-.navbar {
-  padding-left: 228px;
-  padding-right: 230px;
-}
-
-/* Make the navbar mobile-friendly */
-@media (max-width: 991.98px) {
-  .navbar {
-    padding-left: 16px;
-    /* comfy mobile padding */
-    padding-right: 16px;
-  }
-
-  /* Let dropdowns stack inside the collapsed menu instead of flying out */
-  .navbar .dropdown-menu {
-    position: static;
-    /* stops overflow off-screen */
-    float: none;
-    width: 100%;
-    margin: .25rem 0 0;
-    border: 0;
-    box-shadow: none;
-  }
-
-  /* Indent second-level (submenu) a bit */
-  .dropdown-submenu>.dropdown-menu {
-    margin-left: 1rem;
-  }
-
-  /* Keep long menus scrollable on small screens */
-  .navbar .dropdown-menu {
-    max-height: calc(100vh - 120px);
-    overflow-y: auto;
-  }
-}
-
-/* Optional: nicer tap targets for submenu items */
-@media (max-width: 991.98px) {
   .dropdown-item {
     padding-top: .65rem;
     padding-bottom: .65rem;
   }
+}
+
+/* ========== Footer (matches navbar width) ========== */
+
+.footer-section {
+  padding: 50px 0;
+  border-top: 1.5px solid rgba(23, 23, 23, .08);
+  margin-top: 60px;
+  width: 100%;
+}
+
+/* Keep using your .footer-container but make it behave like the navbar container */
+.footer-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media (min-width:1400px) {
+  .footer-container {
+    max-width: var(--page-max);
+  }
+}
+
+@media (min-width:1200px) {
+
+  /* On desktop we already add gutters via fixed navbar; footer aligns by centering */
+  .footer-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.footer-description {
+  color: var(--text-gray);
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 20px;
+  max-width: 420px;
+}
+
+.footer-title {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.footer-link {
+  color: var(--text-gray);
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 2;
+  display: block;
+  transition: .2s;
+}
+
+.footer-link:hover {
+  color: var(--primary-orange);
+}
+
+.footer-bottom {
+  border-top: 1.5px solid rgba(23, 23, 23, .08);
+  padding-top: 16px;
+  margin-top: 16px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-gray);
+  transition: .2s;
+}
+
+.social-icon:hover {
+  color: var(--primary-orange);
+}
+
+.copyright-text {
+  color: var(--text-gray);
+  font-size: 15px;
 }
